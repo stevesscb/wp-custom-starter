@@ -1,0 +1,21 @@
+# Compiled
+app
+httpdocs
+public_html
+
+# Legacy
+_legacy
+
+# Mapping
+*.map
+
+# NPM
+node_modules
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Server
+conf
+logs

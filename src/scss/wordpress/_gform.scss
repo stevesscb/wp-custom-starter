@@ -1,0 +1,29 @@
+@if $is-frontend {
+  .gform_anchor {
+    @extend %sr-only;
+  }
+
+  .gform_fields {
+    @extend %list-reset;
+  }
+
+  .gform_hidden {
+    @extend %sr-only;
+  }
+
+  .hidden_label {
+    @extend %sr-only;
+  }
+
+  .gfield_checkbox, .gfield_radio {
+    @extend %list-reset;
+  }
+
+  .gfield_visibility_hidden {
+    @extend %sr-only;
+  }
+
+  .gform_validation_container {
+    display: none;
+  }
+}

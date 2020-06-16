@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.login, .interim-login.login {
+  h1 a {
+    width: 8em;
+    height: 8em;
+    background: url('../assets/images/logo-grayscale.svg') center no-repeat;
+  }
+}

@@ -1,0 +1,147 @@
+// ==========================================================================
+// Breakpoint
+// - Check if the given size name is in the selected $breakpoints-model
+// - TRUE:
+//   (1) Get the input’s corresponding value from $breakpoints-model
+//   (2) Prepare a list of breakpoint values to render a ranged media query
+//   (3) Determine how many breakpoints are there to prevent invalid range
+//   (4) Determine the index of the current breakpoint for comparison
+//   (5) If it is the last breakpoint in the list, there is no max-width
+//   (6) If it is the first breakpoint in the list, there is no point
+//       declaring min-width since it would be 0
+//
+// - FALSE:
+//   (7) Render with the given string as is, e.g. 75rem
+// ==========================================================================
+@mixin gs-breakpoint($size-name, $direction: only) {
+  @if map_has_key($breakpoints-model, $size-name) {
+    $value: map-get($breakpoints-model, $size-name);                     // (1)
+    $value-list: map_values($breakpoints-model);                         // (2)
+    $value-count: length($breakpoints-model);                            // (3)
+    $current-value-index: index($breakpoints-model, $size-name $value);  // (4)
+
+    @if $direction == only {
+      @if $current-value-index == $value-count {                         // (5)
+        @media (min-width: ($value / 16 * 1em)) { @content; }
+      }
+
+      @else {
+        $next-value: nth($value-list, $current-value-index + 1) - 1;
+
+        @media (min-width: ($value / 16 * 1em)) and (max-width: ($next-value / 16 * 1em)) { @content; }
+      }
+    }
+
+    @else {
+      @if $current-value-index == 1 {                                    // (6)
+        @content;
+      }
+
+      @else {
+        @media (min-width: ($value / 16 * 1em)) { @content; }
+      }
+    }
+  }
+
+  @else {
+    @media (min-width: $size-name) { @content; }                        // (7)
+  }
+}
+
+// ==========================================================================
+// Breakpoint-based loop
+// (1) Get the list of breakpoint names to help render media queries. Name is
+//     not included in the font size variable because $breakpoint-foundation
+//     starts with keyword "small" instead of "mini"
+// (2) If it is the first font size in the list, there is no point
+//     calling media query since it would be the base
+// ==========================================================================
+@mixin gs-breakpoint-loop($items) {
+  $breakpoint-names: map-keys($breakpoints-model);  // (1)
+  $previous-size: 0;
+  $index: 1;
+
+  @each $item in $items {
+    $size-name: nth($breakpoint-names, $index);
+
+    @if $index == 1 {                               // (2)
+      @content($item);
+    }
+
+    @else if $item != $previous-size {
+      @include gs-breakpoint($size-name, up) {
+        @content($item);
+      }
+    }
+
+    $index: $index + 1;
+    $previous-size: $item;
+  }
+}
+
+// ==========================================================================
+// Fixes - when browsers are not rendering things well enough
+// ==========================================================================
+@mixin gs-fix-color {
+  transform: translateZ(0);
+}
+
+@mixin gs-fix-fatnoodle($force: true) {
+  @if $force == true {
+    @include gs-fix-color;
+  }
+
+  text-rendering: geometricPrecision;
+}
+
+// ==========================================================================
+// Helper Mixins
+// ==========================================================================
+@mixin gs-lang($lang) {
+  :lang(#{$lang}) & {
+    @content;
+  }
+}
+
+@mixin gs-placeholder {
+  /* stylelint-disable selector-no-vendor-prefix */
+  &::-webkit-input-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+  /* stylelint-enable */
+}
+
+@mixin gs-proportional($width: 1, $height: 1) {
+  position: relative;
+  max-width: 100%;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: ($height / $width) * 100%;
+
+  > * {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin gs-transition($attribute: all, $duration: 450ms, $timing: cubic-bezier(0.23, 1, 0.32, 1)) {
+  transition: $attribute $duration $timing;
+}

@@ -1,0 +1,24 @@
+@if $is-frontend {
+  .comment-list {
+    @extend %list-reset;
+  }
+
+  .comment-meta {
+    display: flex;
+  }
+
+  .bypostauthor {
+    background: $color-shade;
+  }
+
+  [name='comment'] {
+    display: block;
+  }
+
+  @media print {
+    .comments,
+    .comment-respond {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@media print {
+  // Hide unnecessary items
+  aside {
+    display: none;
+  }
+
+  // Expand content to provide context
+  [target='_blank']::after {
+    content: ' (' attr(href) ') ';
+  }
+
+  abbr[title]::after {
+    content: ' (' attr(title) ')';
+  }
+
+  // Increase legibility by keeping things together
+  dl, ol, ul {
+    page-break-before: avoid;
+  }
+
+  a, blockquote, table, pre, tr {
+    page-break-inside: avoid;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  img {
+    page-break-inside: avoid;
+    page-break-after: avoid;
+  }
+}
