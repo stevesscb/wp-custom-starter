@@ -63,7 +63,7 @@ module.exports = {
     clean: [
       '**/.DS_Store',
       '**/Thumbs.db',
-      dist + '**/*.map',
+      dist + '/**/*.map',
     ],
   },
 };
