@@ -213,7 +213,7 @@ function wpReplaceSalt() {
         cb(null, file);
       }))
       .pipe(gulp.dest(config.dest));
-};
+}
 
 function displayCompleteHint(cb) {
   fs.readdir(config.dest + '/', (e, files) => {
@@ -238,7 +238,7 @@ function displayCompleteHint(cb) {
     cb();
     process.exit();
   });
-};
+}
 
 exports.setup = gulp.series(
     setProjectIdentifiers,
