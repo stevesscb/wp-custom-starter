@@ -1,5 +1,6 @@
 const config = require('../gulpconfig').scripts;
 
+const chalk = require('chalk');
 const args = require('yargs').argv;
 const glob = require('glob');
 const gulp = require('gulp');
@@ -43,9 +44,16 @@ function scriptsDefault(cb) {
     },
     watch: (process.argv.includes('watch')),
   }, (err, stats) => {
-    if (stats.hasErrors()) {
-      console.log(stats.toJson());
-    }
+    const statOptions = {
+      preset: 'minimal',
+      builtAt: true,
+      colors: true,
+      modules: false,
+      timings: true,
+    };
+
+    console.error(`[${chalk.blue('webpack')}]`);
+    console.error(stats.toString(statOptions));
 
     cb();
   });
