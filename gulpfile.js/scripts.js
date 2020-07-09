@@ -10,7 +10,7 @@ const webpack = require('webpack');
 function scriptsDefault(cb) {
   webpack({
     mode: (args.production) ? 'production' : 'development',
-    devtool: (args.production) ? '' : 'source-map',
+    devtool: (args.production) ? false : 'eval-source-map',
     module: {
       rules: [{
         test: /\.(js|jsx)$/,
