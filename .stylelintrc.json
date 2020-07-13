@@ -27,15 +27,11 @@
         "severity": "warning"
       }
     ],
-    "selector-no-qualifying-type": [
-      true,
-      {
-        "severity": "warning"
-      }
-    ],
+    "selector-no-qualifying-type": null,
     "no-descending-specificity": [
       true,
       {
+        "ignore": ["selectors-within-list"],
         "severity": "warning"
       }
     ],
