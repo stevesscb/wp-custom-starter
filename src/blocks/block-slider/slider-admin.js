@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import pick from 'lodash/pick';
+import _ from 'lodash';
 
 /**
  * WordPress dependencies
@@ -46,7 +46,7 @@ registerBlockType( 'client/slider', {
     const setImages = ( img ) => setAttributes( {
       sliderImages: img.map(
         ( image ) => {
-          return pick( image, [
+          return _.pick( image, [
             'id',
             'url',
             'alt',
