@@ -1,6 +1,6 @@
 {
   "name": "grayscale-wordpress-scaffolding",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "K Chan <k.chan@grayscale.com.hk> (https://grayscale.com.hk)",
   "license": "GPL-3.0",
   "repository": "github:grayscaleltd/grayscale-wordpress-scaffolding",
@@ -15,7 +15,7 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-lodash": "^3.3.4",
-    "browser-sync": "^2.26.7",
+    "browser-sync": "^2.26.10",
     "chalk": "^4.1.0",
     "classnames": "^2.2.6",
     "cssnano": "^4.1.10",
@@ -51,7 +51,9 @@
     "yargs": "^15.4.1"
   },
   "babel": {
-    "plugins": ["lodash"],
+    "plugins": [
+      "lodash"
+    ],
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
