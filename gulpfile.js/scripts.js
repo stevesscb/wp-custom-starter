@@ -1,7 +1,7 @@
 const config = require('../gulpconfig').scripts;
 
-const chalk = require('chalk');
 const args = require('yargs').argv;
+const chalk = require('chalk');
 const glob = require('glob');
 const gulp = require('gulp');
 const path = require('path');
