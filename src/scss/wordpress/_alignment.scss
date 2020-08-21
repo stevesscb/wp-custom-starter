@@ -6,6 +6,7 @@
   }
 
   .aligncenter {
+    clear: both;
     margin-left: auto;
     margin-right: auto;
   }
@@ -31,7 +32,7 @@
 
   // ***************************************************************************
   // Text alignments.
-  // https://github.com/WordPress/gutenberg/blob/wp/5.4/packages/block-library/src/style.scss
+  // https://github.com/WordPress/gutenberg/blob/wp/5.5/packages/block-library/src/style.scss
   // ***************************************************************************
 
   .has-text-align-center {
