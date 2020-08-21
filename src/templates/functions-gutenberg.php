@@ -7,19 +7,6 @@
     }
   }, 99 );
 
-/* FEATURES */
-  add_action( 'after_setup_theme', function() {
-    add_editor_style( 'editor.css' );
-    add_theme_support( 'align-wide' );
-    add_theme_support( 'disable-custom-colors' );
-    add_theme_support( 'disable-custom-font-sizes' );
-    add_theme_support( 'disable-custom-gradients' );
-    add_theme_support( 'editor-color-palette' );
-    add_theme_support( 'editor-font-sizes' );
-    add_theme_support( 'editor-gradient-presets' );
-  } );
-
-/* JAVASCRIPT */
   add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_script(
       'blocks-core',
@@ -27,4 +14,18 @@
       array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
       ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time()
     );
+  } );
+
+/* FEATURES */
+  add_action( 'after_setup_theme', function() {
+    add_editor_style( 'editor.css' );
+    add_theme_support( 'align-wide' );
+    add_theme_support( 'custom-line-height' );
+    add_theme_support( 'custom-units' );
+    add_theme_support( 'disable-custom-colors' );
+    add_theme_support( 'disable-custom-font-sizes' );
+    add_theme_support( 'disable-custom-gradients' );
+    add_theme_support( 'editor-color-palette' );
+    add_theme_support( 'editor-font-sizes' );
+    add_theme_support( 'editor-gradient-presets' );
   } );
