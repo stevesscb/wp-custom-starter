@@ -11,13 +11,13 @@ require 'functions-widgets.php';
 
 /* ENQUEUE */
   add_action( 'wp_enqueue_scripts', function() {
-    wp_enqueue_style( 'client-theme', get_stylesheet_uri() );
+    wp_enqueue_style( 'client-theme', get_stylesheet_uri(), null, null );
 
     wp_enqueue_script(
       'client-theme',
       get_stylesheet_directory_uri() . '/application.js',
       array( 'jquery' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time(),
+      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? null : time(),
       true
     );
   } );

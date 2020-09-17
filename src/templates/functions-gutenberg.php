@@ -12,7 +12,7 @@
       'blocks-core',
       get_stylesheet_directory_uri() . '/admin/blocks-core.js',
       array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time()
+      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? null : time()
     );
   } );
 
