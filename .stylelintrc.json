@@ -28,13 +28,7 @@
       }
     ],
     "selector-no-qualifying-type": null,
-    "no-descending-specificity": [
-      true,
-      {
-        "ignore": ["selectors-within-list"],
-        "severity": "warning"
-      }
-    ],
+    "no-descending-specificity": null,
     "order/order": null,
     "order/properties-alphabetical-order": null,
     "scss/at-extend-no-missing-placeholder": [
