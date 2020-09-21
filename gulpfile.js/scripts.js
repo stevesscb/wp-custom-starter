@@ -38,7 +38,11 @@ function scriptsDefault(cb) {
 
       return entries;
     },
-    output: {
+    output: (webpack.version > 'v5') ? {
+      path: path.resolve(__dirname, '../'),
+      filename: '[name].js',
+      ecmaVersion: 5,
+    } : {
       path: path.resolve(__dirname, '../'),
       filename: '[name].js',
     },
