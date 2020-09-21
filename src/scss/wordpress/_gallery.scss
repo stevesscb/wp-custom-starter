@@ -83,26 +83,31 @@
     }
 
     // On mobile and responsive viewports, we allow only 1 or 2 columns at the most.
+    .blocks-gallery-image,
+    .blocks-gallery-item {
+      width: calc(50% - 1em);
+
+      &:nth-of-type(even) {
+        margin-right: 0;
+      }
+    }
+
     @for $i from 1 through 8 {
       &.columns-#{$i} .blocks-gallery-image,
       &.columns-#{$i} .blocks-gallery-item {
-        @include gs-breakpoint(medium, up) {
-          @if $i == 1 {
-            width: 100%;
-            margin-right: 0;
-          }
+        @if $i == 1 {
+          width: 100%;
+          margin-right: 0;
+        }
 
-          @else if $i != 2 {
-            width: calc((100% - #{ 1em } * #{ $i - 1 }) / #{ $i });
+        @include gs-breakpoint(medium, up) {
+          @if $i != 2 {
+            width: calc((100% - 1em * #{ $i - 1 }) / #{ $i });
             margin-right: 1em;
 
-            @supports (-ms-ime-align: auto) {
-              width: calc((100% - #{ 1em } * #{ $i - 1 }) / #{ $i } - 1px);
+            &:nth-of-type(#{$i}n) {
+              margin-right: 0;
             }
-          }
-
-          &:nth-of-type(#{$i}n) {
-            margin-right: 0;
           }
         }
       }
@@ -129,11 +134,11 @@
     }
   }
 
-  .blocks-gallery-caption {
-    margin-top: -1.5em;
-  }
-
   .gallery-caption {
     @extend figcaption;
   }
+}
+
+.wp-block-gallery {
+  margin-bottom: 1.5em;
 }
