@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Grayscale’s Blocks
  * Description: Gutenberg blocks used by the custom theme.
- * Version: 1.0
+ * Version: 1.0.0
  * Author: Team Grayscale
  * Author URI: https://grayscale.com.hk/
  * License: GNU General Public License v3 or later
@@ -35,7 +35,7 @@ if ( !defined( 'ABSPATH' ) ) {
       'client-blocks-editor',
       plugins_url( 'client-blocks-editor.js', __FILE__ ),
       array( 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time()
+      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? get_plugin_data( __FILE__ )['Version'] : time()
     );
   } );
 
@@ -45,7 +45,7 @@ if ( !defined( 'ABSPATH' ) ) {
       'client-blocks',
       plugins_url( 'client-blocks.css', __FILE__ ),
       null,
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time()
+      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? get_plugin_data( __FILE__ )['Version'] : time()
     );
   } );
 
@@ -54,7 +54,7 @@ if ( !defined( 'ABSPATH' ) ) {
       'client-blocks',
       plugins_url( 'client-blocks.js', __FILE__ ),
       array( 'jquery' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time(),
+      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? get_plugin_data( __FILE__ )['Version'] : time(),
       true
     );
   } );
