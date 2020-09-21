@@ -1,8 +1,8 @@
 // ==========================================================================
 // Breakpoint
-// - Check if the given size name is in the selected $breakpoints-model
+// - Check if the given size name is in the selected $breakpoints
 // - TRUE:
-//   (1) Get the input’s corresponding value from $breakpoints-model
+//   (1) Get the input’s corresponding value from $breakpoints
 //   (2) Prepare a list of breakpoint values to render a ranged media query
 //   (3) Determine how many breakpoints are there to prevent invalid range
 //   (4) Determine the index of the current breakpoint for comparison
@@ -14,11 +14,11 @@
 //   (7) Render with the given string as is, e.g. 75rem
 // ==========================================================================
 @mixin gs-breakpoint($size-name, $direction: only) {
-  @if map_has_key($breakpoints-model, $size-name) {
-    $value: map-get($breakpoints-model, $size-name);                     // (1)
-    $value-list: map_values($breakpoints-model);                         // (2)
-    $value-count: length($breakpoints-model);                            // (3)
-    $current-value-index: index($breakpoints-model, $size-name $value);  // (4)
+  @if map_has_key($breakpoints, $size-name) {
+    $value: map-get($breakpoints, $size-name);                     // (1)
+    $value-list: map_values($breakpoints);                         // (2)
+    $value-count: length($breakpoints);                            // (3)
+    $current-value-index: index($breakpoints, $size-name $value);  // (4)
 
     @if $direction == only {
       @if $current-value-index == $value-count {                         // (5)
@@ -57,7 +57,7 @@
 //     calling media query since it would be the base
 // ==========================================================================
 @mixin gs-breakpoint-loop($items) {
-  $breakpoint-names: map-keys($breakpoints-model);  // (1)
+  $breakpoint-names: map-keys($breakpoints);  // (1)
   $previous-size: 0;
   $index: 1;
 
