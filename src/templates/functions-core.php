@@ -13,7 +13,7 @@
 
   // Custom Admin Login Logo Title
   add_filter( 'login_headertext', function() {
-    return 'Grayscale Limited Web Design Hong Kong';
+    return 'Grayscale web design and web development Hong Kong';
   } );
 
 /* COMMENTS */
