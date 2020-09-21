@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import '../settings';
+
+// Colors
+$gs-major: #181231;
+$gs-highlight: #7c01fd;
+$gs-error: #f06;
+$gs-white: #fff;
+
 html {
   box-sizing: border-box;
 }
@@ -7,9 +16,48 @@ html {
 }
 
 .login, .interim-login.login {
+  color: $gs-major;
+  font-family: 'Inter', sans-serif;
+  background: $gs-major;
+
   h1 a {
-    width: 8em;
-    height: 8em;
+    width: 4em;
+    height: 4em;
     background: url('../assets/images/logo-grayscale.svg') center no-repeat;
+    margin: 0 0 25px;
+  }
+
+  #loginform {
+    border: 0;
+  }
+
+  .message,
+  .success {
+    border-left-color: $gs-highlight;
+  }
+
+  #login_error {
+    border-left-color: $gs-error;
+  }
+
+  #nav,
+  #backtoblog {
+    padding: 0;
+
+    a {
+      color: $gs-white;
+      text-decoration: none;
+      background: left 100% no-repeat;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-size: 0% 1px;
+      @include gs-transition;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $gs-white;
+        background-size: 100% 1px;
+      }
+    }
   }
 }
