@@ -1,9 +1,4 @@
 @media print {
-  // Hide unnecessary items
-  aside {
-    display: none;
-  }
-
   // Expand content to provide context
   [target='_blank']::after {
     content: ' (' attr(href) ') ';
