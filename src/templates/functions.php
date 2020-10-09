@@ -18,6 +18,14 @@ require 'functions-widgets.php';
       ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? wp_get_theme()->get( 'Version' ) : time()
     );
 
+    wp_enqueue_style(
+      'client-theme-print',
+      get_stylesheet_directory_uri() . '/print.css',
+      null,
+      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? wp_get_theme()->get( 'Version' ) : time(),
+      'print'
+    );
+
     wp_enqueue_script(
       'client-theme',
       get_stylesheet_directory_uri() . '/application.js',
