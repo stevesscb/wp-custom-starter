@@ -9,6 +9,7 @@ const gulpNotify = require('gulp-notify');
 const gulpPlumber = require('gulp-plumber');
 const gulpPostCSS = require('gulp-postcss');
 const gulpSass = require('gulp-sass');
+const gulpSassVariables = require('gulp-sass-variables');
 const gulpSourcemaps = require('gulp-sourcemaps');
 const gulpTouchCmd = require('gulp-touch-cmd');
 const postcssCalc = require('postcss-calc');
@@ -19,6 +20,9 @@ function stylesDefault() {
   return gulp.src(config.src, {ignore: config.adminSrc})
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
+      }))
+      .pipe(gulpSassVariables({
+        $version: require('../package').version,
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
       .pipe(gulpSass({

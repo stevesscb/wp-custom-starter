@@ -3,7 +3,7 @@ Theme Name: Grayscale
 Author: Team Grayscale
 Author URI: https://grayscale.com.hk/
 Description: Grayscale’s theme
-Version: 1.0
+Version: #{$version}
 License: GNU General Public License v3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: grayscale
@@ -15,7 +15,6 @@ Text Domain: grayscale
 @import 'settings';
 @import 'normalize';
 @import 'core/base';
-@import 'core/print';
 
 // ==========================================================================
 // WORDPRESS & EDITOR

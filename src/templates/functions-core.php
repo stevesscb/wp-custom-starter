@@ -13,7 +13,7 @@
 
   // Custom Admin Login Logo Title
   add_filter( 'login_headertext', function() {
-    return 'Grayscale Limited Web Design Hong Kong';
+    return 'Grayscale web design and web development Hong Kong';
   } );
 
 /* COMMENTS */
@@ -60,7 +60,7 @@
     add_theme_support( 'automatic-feed-links' );
     add_theme_support( 'custom-logo' );
     add_theme_support( 'editor-styles' );
-    add_theme_support( 'html5', array( 'caption', 'comment-form', 'comment-list', 'gallery', 'script', 'search-form', 'style' ) );
+    add_theme_support( 'html5', array( 'caption', 'comment-form', 'comment-list', 'gallery', 'navigation-widgets', 'script', 'search-form', 'style' ) );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'responsive-embeds' );
     add_theme_support( 'title-tag' );

@@ -1,70 +1,37 @@
-.wp-block-button {
-  color: $color-white;
-
-  &.aligncenter {
-    text-align: center;
-  }
-
-  &.alignright {
-    /*rtl:ignore*/
-    text-align: right;
-  }
-}
-
-.wp-block-button__link {
-  background-color: $color-major;
-  border: 0;
-  border-radius: 0;
-  // box-shadow: none;
-  color: inherit;
-  cursor: pointer;
-  display: inline-block;
-  font-size: inherit;
-  // margin: 0;
-  padding: 0.25em 0.75em;
-  text-align: center;
-  text-decoration: none;
-  overflow-wrap: break-word;
-
-  // &:hover,
-  // &:focus,
-  // &:active,
-  // &:visited {
-  //   color: inherit;
-  // }
-}
-
-// .wp-gs .wp-block-button__link:not(.has-background) {
-//   background-color: var(--wp-block-core-button--color--background, var(--wp-color--primary, $dark-gray-700));
-// }
-
-// .is-style-squared .wp-block-button__link {
-//   border-radius: 0;
-// }
-// .no-border-radius.wp-block-button__link {
-//   border-radius: 0 !important;
-// }
-
-// .is-style-outline {
-//   color: $dark-gray-700;
-
-//   .wp-block-button__link {
-//     background-color: transparent;
-//     border: 2px solid;
-//   }
-// }
-
+// Increased specificity to override blocks default margin.
 .wp-block-buttons .wp-block-button {
   display: inline-block;
   margin-right: 1em;
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
+
+  &:last-child {
+    margin-right: 0;
+  }
 }
 
 .wp-block-buttons.alignright .wp-block-button {
-  margin-right: none;
+  /*rtl:ignore*/
+  margin-right: 0;
+  /*rtl:ignore*/
   margin-left: 1em;
+
+  &:first-child {
+    margin-left: 0;
+  }
 }
 
+.wp-block-buttons.alignleft .wp-block-button {
+  /*rtl:ignore*/
+  margin-left: 0;
+  /*rtl:ignore*/
+  margin-right: 1em;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+// .wp-block-button.aligncenter, // This is to support the legacy Button block.
 .wp-block-buttons.aligncenter {
   text-align: center;
 }

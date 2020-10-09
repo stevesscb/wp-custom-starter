@@ -45,6 +45,15 @@ $is-frontend: false;
   max-width: none;
 }
 
+[data-align='wide'], [data-align='full'] {
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    width: 100%;
+  }
+}
+
 .editor-post-title__block .editor-post-title__input {
   @extend h1;
 }

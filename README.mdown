@@ -1,4 +1,4 @@
-# How to use this scaffolding?
+# How to use this?
 
 ## System Requirement
 
@@ -27,7 +27,7 @@ The package comes with linter files to maintain code style and you are encourage
 * Run `gulp --tasks-simple` in the termianl to view all avaialble tasks
 * Add `--production` to prepare output for production use
 
-## Commonly Documentation
+## WordPress-related Documentation
 
 * [Gravity Forms](https://docs.gravityforms.com)
 * [WooCommerce](https://docs.woocommerce.com/)
