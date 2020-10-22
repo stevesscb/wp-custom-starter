@@ -61,3 +61,10 @@ html {
     }
   }
 }
+
+#wp-auth-check-wrap {
+  #wp-auth-check,
+  #wp-auth-check-form {
+    background: $gs-major;
+  }
+}
