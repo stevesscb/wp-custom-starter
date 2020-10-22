@@ -1,5 +1,6 @@
 wp.domReady(function() {
   const whitelistedCoreBlocks = [
+    'core/block',
     'core/button',
     'core/buttons',
     'core/embed',
