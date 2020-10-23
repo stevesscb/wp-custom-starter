@@ -7,14 +7,6 @@ $gs-highlight: #7c01fd;
 $gs-error: #f06;
 $gs-white: #fff;
 
-html {
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit;
-}
-
 .login, .interim-login.login {
   color: $gs-major;
   font-family: 'Inter', sans-serif;
