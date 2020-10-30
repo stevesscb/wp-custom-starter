@@ -1,15 +1,63 @@
-html {
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+@import '../settings';
 
-*, *::before, *::after {
-  box-sizing: inherit;
-}
+$gs-white: #fff;
+$gs-major: #181231;
+$gs-minor: #7c01fd;
+$gs-error: #f06;
 
+/* stylelint-disable selector-max-id */
 .login, .interim-login.login {
+  background: $gs-major;
+  color: $gs-major;
+  font-family: 'Inter', sans-serif;
+
   h1 a {
-    width: 8em;
-    height: 8em;
+    margin: 0 0 25px;
+    width: 4em;
+    height: 4em;
     background: url('../assets/images/logo-grayscale.svg') center no-repeat;
   }
+
+  [name='loginform'] { // #loginform {
+    border: 0;
+  }
+
+  #nav, #backtoblog {
+    padding: 0;
+
+    a {
+      background: left 100% no-repeat;
+      background-image: linear-gradient(currentColor, currentColor);
+      background-size: 0% 1px;
+      color: $gs-white;
+      text-decoration: none;
+      @include gs-transition;
+
+      &:hover, &:focus, &:active {
+        background-size: 100% 1px;
+        color: $gs-white;
+      }
+    }
+  }
+
+  .message, .success {
+    border-left-color: $gs-minor;
+  }
+
+  #login_error {
+    border-left-color: $gs-error;
+  }
 }
+
+#wp-auth-check-wrap {
+  #wp-auth-check,
+  #wp-auth-check-form {
+    background: $gs-major;
+  }
+
+  .wp-auth-check-close {
+    color: $color-white;
+  }
+}
+/* stylelint-enable selector-max-id */
