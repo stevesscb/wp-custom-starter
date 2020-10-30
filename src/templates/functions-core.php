@@ -2,9 +2,11 @@
 
 /* ADMIN LOGIN */
   // Custom Admin Login Style
-  add_action( 'login_head', function() {
+  function add_wp_login_styles() {
     echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/admin/wp-login.css">';
-  } );
+  }
+  add_action( 'login_head', 'add_wp_login_styles' );
+  add_action( 'admin_head', 'add_wp_login_styles' );
 
   // Custom Admin Login Logo URL
   add_filter( 'login_headerurl', function() {
