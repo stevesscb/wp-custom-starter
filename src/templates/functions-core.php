@@ -3,7 +3,7 @@
 /* ADMIN LOGIN */
   // Custom Admin Login Style
   function add_wp_login_styles() {
-    echo '<link rel="stylesheet" href="' . get_stylesheet_directory_uri() . '/admin/wp-login.css">';
+    echo '<link rel="stylesheet" href="' . get_template_directory_uri() . '/admin/wp-login.css">';
   }
   add_action( 'login_head', 'add_wp_login_styles' );
   add_action( 'admin_head', 'add_wp_login_styles' );
