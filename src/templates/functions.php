@@ -28,14 +28,14 @@ require 'functions-widgets.php';
   add_action( 'wp_enqueue_scripts', function() {
     wp_enqueue_style(
       'client-theme',
-      get_stylesheet_uri(),
+      get_template_directory_uri() . '/style.css',
       null,
       ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? wp_get_theme()->get( 'Version' ) : time()
     );
 
     wp_enqueue_style(
       'client-theme-print',
-      get_stylesheet_directory_uri() . '/print.css',
+      get_template_directory_uri() . '/print.css',
       null,
       ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? wp_get_theme()->get( 'Version' ) : time(),
       'print'
@@ -43,7 +43,7 @@ require 'functions-widgets.php';
 
     wp_enqueue_script(
       'client-theme',
-      get_stylesheet_directory_uri() . '/application.js',
+      get_template_directory_uri() . '/application.js',
       array( 'jquery' ),
       ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? wp_get_theme()->get( 'Version' ) : time(),
       true
