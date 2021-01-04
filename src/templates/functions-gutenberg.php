@@ -26,4 +26,5 @@
     add_theme_support( 'editor-color-palette' );
     add_theme_support( 'editor-font-sizes' );
     add_theme_support( 'editor-gradient-presets' );
+    remove_theme_support( 'core-block-patterns' );
   } );

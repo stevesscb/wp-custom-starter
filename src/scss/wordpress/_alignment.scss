@@ -32,7 +32,7 @@
 
   // ***************************************************************************
   // Text alignments.
-  // https://github.com/WordPress/gutenberg/blob/wp/5.5/packages/block-library/src/style.scss
+  // https://github.com/WordPress/gutenberg/blob/wp/5.6/packages/block-library/src/style.scss
   // ***************************************************************************
 
   .has-text-align-center {
@@ -40,10 +40,12 @@
   }
 
   .has-text-align-left {
+    /*rtl:ignore*/
     text-align: left;
   }
 
   .has-text-align-right {
+    /*rtl:ignore*/
     text-align: right;
   }
 }
