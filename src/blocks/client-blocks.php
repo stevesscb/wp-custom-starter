@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Grayscale’s Blocks
+ * Plugin Name: Client Blocks
  * Description: Gutenberg blocks used by the custom theme.
  * Version: 1.0.0
  * Author: Team Grayscale

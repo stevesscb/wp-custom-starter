@@ -6,6 +6,7 @@ wp.domReady(function() {
     'core/embed',
     'core/freeform',
     'core/gallery',
+    'core/group',
     'core/heading',
     'core/image',
     'core/list',

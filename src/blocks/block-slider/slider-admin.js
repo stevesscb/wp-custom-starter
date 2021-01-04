@@ -23,16 +23,24 @@ const {
  */
 registerBlockType( 'client/slider', {
   title: __( 'Image Slider', 'grayscale' ),
-  description: __( 'Slideshow of images.', 'grayscale' ),
-  icon: 'image-flip-horizontal',
+  description: __(
+    'Slideshow of images.',
+    'grayscale'
+  ),
   category: 'widgets',
+  icon: 'image-flip-horizontal',
+  keywords: [ __( 'carousel' ) ],
+  styles: [],
   attributes: {
     sliderImages: {
       type: 'array',
     },
   },
+  variations: [],
   supports: {
+    anchor: true,
     align: [],
+    multiple: true,
   },
   edit: ( props ) => {
     const {
