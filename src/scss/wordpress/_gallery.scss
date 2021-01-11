@@ -4,9 +4,6 @@
     display: flex;
     flex-wrap: wrap;
     @extend %list-reset;
-    // padding: 0;
-    // // Some themes give all <ul> default margin instead of padding.
-    // margin: 0;
 
     .blocks-gallery-image,
     .blocks-gallery-item {
@@ -17,6 +14,13 @@
       flex-direction: column;
       justify-content: center;
       position: relative;
+
+      // On mobile and responsive viewports, we allow only 1 or 2 columns at the most.
+      width: calc(50% - 1em);
+
+      &:nth-of-type(even) {
+        margin-right: 0;
+      }
 
       figure {
         margin: 0;
@@ -34,10 +38,8 @@
         display: block;
         // max-width: 100%;
         // height: auto;
-      }
 
-      // IE doesn't handle cropping, so we need an explicit width here.
-      img {
+        // IE doesn't handle cropping, so we need an explicit width here.
         width: 100%;
 
         // IE11 doesn't read rules inside this query. They are applied only to modern browsers.
@@ -57,11 +59,16 @@
         text-align: center;
         font-size: 90%;
         background: linear-gradient(0deg, rgba($color-black, 0.7) 0, rgba($color-black, 0.3) 70%, transparent);
+        margin: 0;
 
         img {
           display: inline;
         }
       }
+    }
+
+    figcaption {
+      flex-grow: 1;
     }
 
     // Cropped
@@ -79,16 +86,6 @@
           flex: 1;
           object-fit: cover;
         }
-      }
-    }
-
-    // On mobile and responsive viewports, we allow only 1 or 2 columns at the most.
-    .blocks-gallery-image,
-    .blocks-gallery-item {
-      width: calc(50% - 1em);
-
-      &:nth-of-type(even) {
-        margin-right: 0;
       }
     }
 

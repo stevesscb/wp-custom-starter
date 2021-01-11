@@ -25,9 +25,14 @@ const {
  */
 registerBlockType( 'client/testimonial', {
   title: __( 'Testimonial', 'grayscale' ),
-  description: __( 'Show the good words you received.', 'grayscale' ),
-  icon: 'format-chat',
+  description: __(
+    'Show the good words you received.',
+    'grayscale'
+  ),
   category: 'widgets',
+  icon: 'format-chat',
+  keywords: [],
+  styles: [],
   attributes: {
     testimonialContent: {
       type: 'array',
@@ -55,8 +60,11 @@ registerBlockType( 'client/testimonial', {
       selector: '.block-image img',
     },
   },
+  variations: [],
   supports: {
+    anchor: true,
     align: [],
+    multiple: true,
   },
   edit: ( props ) => {
     const {
