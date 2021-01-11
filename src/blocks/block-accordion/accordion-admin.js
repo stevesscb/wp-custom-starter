@@ -28,8 +28,10 @@ registerBlockType( 'client/accordion', {
     'Show information in a condensed way that can be expanded or collapsed.',
     'grayscale'
   ),
-  icon: 'excerpt-view',
   category: 'widgets',
+  icon: 'excerpt-view',
+  keywords: [],
+  styles: [],
   attributes: {
     multiExpand: {
       type: 'boolean',
@@ -40,9 +42,13 @@ registerBlockType( 'client/accordion', {
       default: true,
     },
   },
+  variations: [],
   supports: {
+    anchor: true,
     align: [],
+    multiple: true,
   },
+  parent: null,
   edit: ( props ) => {
     const {
       attributes: {
@@ -106,9 +112,10 @@ registerBlockType( 'client/accordion', {
 registerBlockType( 'client/accordion-item', {
   title: __( 'Accordion Item', 'grayscale' ),
   description: __( 'Content within the Accordion.', 'grayscale' ),
-  icon: 'text',
   category: 'common',
-  parent: [ 'client/accordion' ],
+  icon: 'text',
+  keywords: [],
+  styles: [],
   attributes: {
     accordionTitle: {
       type: 'array',
@@ -123,6 +130,13 @@ registerBlockType( 'client/accordion-item', {
       default: false,
     },
   },
+  variations: [],
+  supports: {
+    anchor: false,
+    align: [],
+    multiple: true,
+  },
+  parent: [ 'client/accordion' ],
   edit: ( props ) => {
     const {
       attributes: {

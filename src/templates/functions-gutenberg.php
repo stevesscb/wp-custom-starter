@@ -10,7 +10,7 @@
   add_action( 'enqueue_block_editor_assets', function() {
     wp_enqueue_script(
       'blocks-core',
-      get_stylesheet_directory_uri() . '/admin/blocks-core.js',
+      get_template_directory_uri() . '/admin/blocks-core.js',
       array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
       time()
     );
@@ -26,4 +26,5 @@
     add_theme_support( 'editor-color-palette' );
     add_theme_support( 'editor-font-sizes' );
     add_theme_support( 'editor-gradient-presets' );
+    remove_theme_support( 'core-block-patterns' );
   } );
