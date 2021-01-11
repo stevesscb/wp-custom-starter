@@ -66,6 +66,7 @@ registerBlockType( 'client/testimonial', {
     align: [],
     multiple: true,
   },
+  parent: null,
   edit: ( props ) => {
     const {
       attributes: {

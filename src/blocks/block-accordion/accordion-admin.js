@@ -111,7 +111,10 @@ registerBlockType( 'client/accordion', {
 
 registerBlockType( 'client/accordion-item', {
   title: __( 'Accordion Item', 'grayscale' ),
-  description: __( 'Content within the Accordion.', 'grayscale' ),
+  description: __(
+    'Content within the Accordion.',
+    'grayscale'
+  ),
   category: 'common',
   icon: 'text',
   keywords: [],

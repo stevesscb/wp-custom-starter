@@ -42,6 +42,7 @@ registerBlockType( 'client/slider', {
     align: [],
     multiple: true,
   },
+  parent: null,
   edit: ( props ) => {
     const {
       attributes: {
