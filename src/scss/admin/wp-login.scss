@@ -6,6 +6,20 @@ $gs-major: #181231;
 $gs-minor: #7c01fd;
 $gs-error: #f06;
 
+%admin-link-style {
+  background: left 100% no-repeat;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  color: $gs-white;
+  text-decoration: none;
+  @include gs-transition;
+
+  &:hover, &:focus, &:active {
+    background-size: 100% 1px;
+    color: $gs-white;
+  }
+}
+
 /* stylelint-disable selector-max-id */
 .login, .interim-login.login {
   background: $gs-major;
@@ -27,17 +41,7 @@ $gs-error: #f06;
     padding: 0;
 
     a {
-      background: left 100% no-repeat;
-      background-image: linear-gradient(currentColor, currentColor);
-      background-size: 0% 1px;
-      color: $gs-white;
-      text-decoration: none;
-      @include gs-transition;
-
-      &:hover, &:focus, &:active {
-        background-size: 100% 1px;
-        color: $gs-white;
-      }
+      @extend %admin-link-style;
     }
   }
 
@@ -48,6 +52,10 @@ $gs-error: #f06;
   #login_error {
     border-left-color: $gs-error;
   }
+}
+
+.privacy-policy-link {
+  @extend %admin-link-style;
 }
 
 #wp-auth-check-wrap {
