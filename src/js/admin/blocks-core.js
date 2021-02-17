@@ -17,15 +17,21 @@ wp.domReady(function() {
   const whitelistedCoreStyles = [
   ];
 
-  // Display statuses of Core Blocks and Block Styles
-  console.group('Gutenberg Core Blocks and Core Styles');
+  const whitelistedCoreVariations = [
+  ];
+
+  // Display statuses of Core Blocks, Styles, and Variations
+  console.group('Gutenberg Core Blocks, Styles, and Variations');
   wp.blocks.getBlockTypes().forEach((blockType) => {
     const isCoreBlock = blockType.name.includes('core');
     const isWhitelistedBlock = whitelistedCoreBlocks.includes(blockType.name);
 
     if (isCoreBlock && !isWhitelistedBlock) {
       console.log(`%c✘ ${blockType.name}`, 'color: orangered');
-    } else if (isCoreBlock && 'styles' in blockType) {
+    } else if (
+      (isCoreBlock && 'styles' in blockType) ||
+      (isCoreBlock && 'variations' in blockType)
+    ) {
       console.group(`%c✔ ${blockType.name}`, 'color: lime');
 
       blockType.styles = blockType.styles.filter((style) => {
@@ -41,12 +47,32 @@ wp.domReady(function() {
 
         if (!isWhitelistedStyle) {
           console.log(
-              `%c✘ ${blockType.name}, ${blockStyle.name}`,
+              `%c✘ ${blockType.name}, style: ${blockStyle.name}`,
               'color: orangered'
           );
         } else {
           console.log(
-              `%c✔ ${blockType.name}, ${blockStyle.name}`,
+              `%c✔ ${blockType.name}, style: ${blockStyle.name}`,
+              'color: lime'
+          );
+        }
+      });
+
+      blockType.variations.forEach((blockVariation) => {
+        const isWhitelistedVariation =
+          whitelistedCoreVariations.some((whitelistedVariation) => {
+            return whitelistedVariation[0] === blockType.name &&
+                whitelistedVariation[1] === blockVariation.name;
+          });
+
+        if (!isWhitelistedVariation) {
+          console.log(
+              `%c✘ ${blockType.name}, variation: ${blockVariation.name}`,
+              'color: orangered'
+          );
+        } else {
+          console.log(
+              `%c✔ ${blockType.name}, variation: ${blockVariation.name}`,
               'color: lime'
           );
         }
@@ -59,21 +85,24 @@ wp.domReady(function() {
   });
   console.groupEnd();
 
-  // Disable unwanted Core Blocks and Block Styles
+  // Disable unwanted Core Blocks, Styles, and Variations
   wp.blocks.getBlockTypes().forEach((blockType) => {
     const isCoreBlock = blockType.name.includes('core');
     const isWhitelistedBlock = whitelistedCoreBlocks.includes(blockType.name);
 
     if (isCoreBlock && !isWhitelistedBlock) {
-      // unregister core Blocks that are not whitelisted
+      // unregister Core Blocks that are not whitelisted
       wp.blocks.unregisterBlockType(blockType.name);
-    } else if (isCoreBlock && 'styles' in blockType) {
-      // for the remaining core Blocks, process only the non-default Block Style
+    } else if (
+      (isCoreBlock && 'styles' in blockType) ||
+      (isCoreBlock && 'variations' in blockType)
+    ) {
+      // for the remaining Core Blocks, process only the non-default Styles
       blockType.styles = blockType.styles.filter((style) => {
         return !style.isDefault;
       });
 
-      // unregister core Block Styles that are not whitelisted
+      // unregister Styles that are not whitelisted
       blockType.styles.forEach((blockStyle) => {
         const isWhitelistedStyle =
           whitelistedCoreStyles.some((whitelistedStyle) => {
@@ -83,6 +112,22 @@ wp.domReady(function() {
 
         if (!isWhitelistedStyle) {
           wp.blocks.unregisterBlockStyle(blockType.name, blockStyle.name);
+        }
+      });
+
+      // unregister Variations that are not whitelisted
+      blockType.variations.forEach((blockVariation) => {
+        const isWhitelistedVariation =
+          whitelistedCoreVariations.some((whitelistedVariation) => {
+            return whitelistedVariation[0] === blockType.name &&
+                whitelistedVariation[1] === blockVariation.name;
+          });
+
+        if (!isWhitelistedVariation) {
+          wp.blocks.unregisterBlockVariation(
+              blockType.name,
+              blockVariation.name
+          );
         }
       });
     }

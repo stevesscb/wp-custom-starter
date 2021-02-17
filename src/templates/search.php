@@ -44,7 +44,7 @@
 
           <?php
             the_posts_pagination( array(
-              'prev_text' => __( '&larr; ', 'grayscale' ),
+              'prev_text' => __( '&larr;', 'grayscale' ),
               'next_text' => __( '&rarr;', 'grayscale' ),
             ) );
           ?>
