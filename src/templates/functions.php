@@ -51,7 +51,7 @@ require 'functions-widgets.php';
   } );
 
 /* PRINT QR CODE */
-  add_action( 'wp_footer', function() {
+  add_action( 'wp_head', function() {
     if ( is_singular() && !is_front_page() ) {
       echo '<style>h1::after{content:url("https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=' . get_the_permalink() . '&choe=UTF-8&chld=L|0");position:absolute;top:0;right:0}@media print{h1{padding-right:200px;text-align:left}}@media screen{h1::after{opacity:0}}</style>';
     }
