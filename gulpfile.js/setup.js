@@ -78,7 +78,7 @@ function setProjectIdentifiers() {
         return 'https://' + projectSlug + '.com';
       },
       validate: (value) => {
-        if (/[^A-Za-z:/-.]/.test(value)) {
+        if (/[^A-Za-z:/\-.]/.test(value)) {
           return 'Alphabets, colon, forward slashes, and hyphens only!';
         } else {
           projectURL = value;
