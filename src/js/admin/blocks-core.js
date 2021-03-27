@@ -18,6 +18,11 @@ wp.domReady(function() {
   ];
 
   const whitelistedCoreVariations = [
+    ['core/columns', 'one-column-full'],
+    ['core/columns', 'two-columns-equal'],
+    ['core/columns', 'two-columns-one-third-two-thirds'],
+    ['core/columns', 'two-columns-two-thirds-one-third'],
+    ['core/columns', 'three-columns-equal'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations
