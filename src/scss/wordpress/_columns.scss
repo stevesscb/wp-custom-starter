@@ -5,7 +5,7 @@
   // Responsiveness: Allow wrapping on mobile.
   flex-wrap: wrap;
 
-  @include break-medium() {
+  @include gs-breakpoint(medium, up) {
     flex-wrap: nowrap;
   }
 

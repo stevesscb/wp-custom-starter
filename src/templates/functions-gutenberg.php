@@ -29,7 +29,7 @@
     remove_theme_support( 'core-block-patterns' );
   } );
 
-  add_filter('block_editor_settings', function ($editor_settings) {
+  add_filter( 'block_editor_settings', function ( $editor_settings ) {
     $editor_settings['__experimentalFeatures']['defaults']['typography']['dropCap'] = false;
     return $editor_settings;
-  });
+  } );
