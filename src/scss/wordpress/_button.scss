@@ -1,5 +1,8 @@
 // $blocks-button__height: 3.1em;
 
+// This variable is repeated across Button, Buttons, and Buttons editor styles.
+// $blocks-block__margin: 0.5em;
+
 // Prefer the link selector instead of the regular button classname
 // to support the previous markup in addition to the new one.
 .wp-block-button__link {
@@ -30,5 +33,32 @@
   &.alignright {
     /*rtl:ignore*/
     text-align: right;
+  }
+}
+
+// Increased specificity needed to override margins
+.wp-block-buttons > .wp-block-button {
+  &.has-custom-width {
+    max-width: none;
+    .wp-block-button__link {
+      width: 100%;
+    }
+  }
+
+  &.wp-block-button__width-25 {
+    width: calc(25% - 1em);
+  }
+
+  &.wp-block-button__width-50 {
+    width: calc(50% - 1em);
+  }
+
+  &.wp-block-button__width-75 {
+    width: calc(75% - 1em);
+  }
+
+  &.wp-block-button__width-100 {
+    margin-right: 0;
+    width: 100%;
   }
 }
