@@ -3,6 +3,8 @@ wp.domReady(function() {
     'core/block',
     'core/button',
     'core/buttons',
+    'core/column',
+    'core/columns',
     'core/embed',
     'core/freeform',
     'core/gallery',
@@ -23,6 +25,7 @@ wp.domReady(function() {
     ['core/columns', 'two-columns-one-third-two-thirds'],
     ['core/columns', 'two-columns-two-thirds-one-third'],
     ['core/columns', 'three-columns-equal'],
+    ['core/columns', 'three-columns-wider-center'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations
