@@ -4,7 +4,7 @@ html {
   color: $color-text;
   font-family: $font-content;
   @include gs-breakpoint-loop($font-size-roots) using ($item) {
-    font-size: $item / 16px * 100%;
+    font-size: math.div($item, 16px) * 100%;
   }
   line-height: $font-line-height; /* stylelint-disable-line */
   overflow-x: hidden;

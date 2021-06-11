@@ -22,13 +22,13 @@
 
     @if $direction == only {
       @if $current-value-index == $value-count {                         // (5)
-        @media (min-width: ($value / 16 * 1em)) { @content; }
+        @media (min-width: (math.div($value, 16) * 1em)) { @content; }
       }
 
       @else {
         $next-value: nth($value-list, $current-value-index + 1) - 1;
 
-        @media (min-width: ($value / 16 * 1em)) and (max-width: ($next-value / 16 * 1em)) { @content; }
+        @media (min-width: (math.div($value, 16) * 1em)) and (max-width: (math.div($next-value, 16) * 1em)) { @content; }
       }
     }
 
@@ -38,7 +38,7 @@
       }
 
       @else {
-        @media (min-width: ($value / 16 * 1em)) { @content; }
+        @media (min-width: (math.div($value, 16) * 1em)) { @content; }
       }
     }
   }
@@ -128,7 +128,7 @@
   max-width: 100%;
   height: 0;
   overflow: hidden;
-  padding-bottom: ($height / $width) * 100%;
+  padding-bottom: math.div($height, $width) * 100%;
 
   > * {
     display: block;
