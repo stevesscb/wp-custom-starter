@@ -50,6 +50,11 @@ require 'functions-widgets.php';
     );
   } );
 
+/* GRAVITY FORMS */
+  if ( is_plugin_active( 'gravityforms/gravityforms.php' ) ) {
+    add_filter( 'gform_disable_form_theme_css', '__return_true' );
+  }
+
 /* PRINT QR CODE */
   add_action( 'wp_head', function() {
     if ( is_singular() && !is_front_page() ) {

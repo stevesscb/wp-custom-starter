@@ -2,7 +2,9 @@
 // APPLY TO EDITOR ONLY
 // ***************************************************************************
 @use 'sass:list';
+@use 'sass:math';
 
+/* stylelint-disable no-invalid-position-at-import-rule */
 // ==========================================================================
 // CORE
 // ==========================================================================
@@ -57,3 +59,4 @@ $is-frontend: false;
 .editor-post-title__block .editor-post-title__input {
   @extend h1;
 }
+/* stylelint-enable no-invalid-position-at-import-rule */
