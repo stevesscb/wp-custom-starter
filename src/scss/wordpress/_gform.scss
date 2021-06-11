@@ -1,29 +1,52 @@
 @if $is-frontend {
+  .gform_ajax_spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 5px;
+    border-radius: 50%;
+    background: $color-white;
+    transform: translate(-50%, -50%);
+  }
+
   .gform_anchor {
     @extend %sr-only;
   }
 
-  .gform_fields {
-    @extend %list-reset;
-  }
+  // Complex Field (e.g. Name, Address) – enable when needed
+  // .ginput_complex {
+  //   display: flex;
+  //   flex-wrap: nowrap;
+  //   justify-content: space-between;
 
-  .gform_hidden {
-    @extend %sr-only;
-  }
+  //   > * {
+  //     flex: 1 1 auto;
 
-  .hidden_label {
-    @extend %sr-only;
-  }
+  //     &:nth-child(n+2) {
+  //       margin-left: 1rem;
+  //     }
 
-  .gfield_checkbox, .gfield_radio {
-    @extend %list-reset;
-  }
+  //     @include gs-breakpoint(medium, up) {
+  //       &:nth-child(n+2) {
+  //         margin-left: 2rem;
+  //       }
+  //     }
+  //   }
 
-  .gfield_visibility_hidden {
-    @extend %sr-only;
-  }
+  //   &.ginput_container_address {
+  //     flex-wrap: wrap;
 
-  .gform_validation_container {
-    display: none;
-  }
+  //     > * {
+  //       margin-left: 0;
+
+  //       @include gs-breakpoint(medium, up) {
+  //         flex: 0 0 calc(50% - 1rem);
+  //       }
+  //     }
+  //   }
+
+  //   > .ginput_full {
+  //     flex-basis: 100%;
+  //   }
+  // }
 }
