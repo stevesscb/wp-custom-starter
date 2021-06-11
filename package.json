@@ -63,7 +63,8 @@
   },
   "browserslist": [
     "last 2 versions",
-    "ie >= 9"
+    "not dead",
+    "> 0.25%"
   ],
   "scripts": {
     "setup": "npm install && gulp setup && gulp build",
