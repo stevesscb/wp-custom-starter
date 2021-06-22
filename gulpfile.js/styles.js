@@ -3,6 +3,7 @@ const config = require('../gulpconfig').styles;
 const args = require('yargs').argv;
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const Fiber = require('fibers');
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const gulpNotify = require('gulp-notify');
@@ -26,6 +27,7 @@ function stylesDefault() {
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
       .pipe(gulpSass({
+        fiber: Fiber,
         includePaths: config.includePaths,
         outputStyle: 'compressed',
       }))
@@ -49,6 +51,7 @@ function stylesAdmin() {
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
       .pipe(gulpSass({
+        fiber: Fiber,
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([
@@ -71,6 +74,7 @@ function stylesBlocks() {
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
       .pipe(gulpSass({
+        fiber: Fiber,
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([

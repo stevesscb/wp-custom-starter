@@ -23,6 +23,7 @@
     "download": "^8.0.0",
     "eslint": "^7.28.0",
     "eslint-config-google": "^0.14.0",
+    "fibers": "^5.0.0",
     "glob": "^7.1.7",
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.2",
