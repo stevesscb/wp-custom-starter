@@ -1,52 +1,69 @@
-@if $is-frontend {
-  .gform_ajax_spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    padding: 5px;
-    border-radius: 50%;
-    background: $color-white;
-    transform: translate(-50%, -50%);
+.gform_ajax_spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 5px;
+  border-radius: 50%;
+  background: $color-white;
+  transform: translate(-50%, -50%);
+}
+
+.gform_anchor {
+  @extend %sr-only;
+}
+
+.gform_submission_error {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: $color-alert;
+  color: $color-white;
+  font-size: 1rem;
+
+  .gform-icon {
+    margin-right: 0.5rem;
+    font-size: 2rem;
   }
 
-  .gform_anchor {
-    @extend %sr-only;
+  @at-root .validation_message {
+    color: $color-alert;
+  }
+}
+
+// Complex Field (e.g. Name, Address)
+.ginput_complex {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  > * {
+    flex: 1 1 auto;
+
+    &:nth-child(n+2) {
+      margin-left: 1rem;
+    }
+
+    @include gs-breakpoint(medium, up) {
+      &:nth-child(n+2) {
+        margin-left: 2rem;
+      }
+    }
   }
 
-  // Complex Field (e.g. Name, Address) – enable when needed
-  // .ginput_complex {
-  //   display: flex;
-  //   flex-wrap: nowrap;
-  //   justify-content: space-between;
+  &.ginput_container_address {
+    flex-wrap: wrap;
 
-  //   > * {
-  //     flex: 1 1 auto;
+    > * {
+      margin-left: 0;
 
-  //     &:nth-child(n+2) {
-  //       margin-left: 1rem;
-  //     }
+      @include gs-breakpoint(medium, up) {
+        flex: 0 0 calc(50% - 1rem);
+      }
+    }
+  }
 
-  //     @include gs-breakpoint(medium, up) {
-  //       &:nth-child(n+2) {
-  //         margin-left: 2rem;
-  //       }
-  //     }
-  //   }
-
-  //   &.ginput_container_address {
-  //     flex-wrap: wrap;
-
-  //     > * {
-  //       margin-left: 0;
-
-  //       @include gs-breakpoint(medium, up) {
-  //         flex: 0 0 calc(50% - 1rem);
-  //       }
-  //     }
-  //   }
-
-  //   > .ginput_full {
-  //     flex-basis: 100%;
-  //   }
-  // }
+  > .ginput_full {
+    flex-basis: 100%;
+  }
 }
