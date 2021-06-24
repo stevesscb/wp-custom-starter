@@ -119,7 +119,7 @@
     // Apply max-width to floated items that have no intrinsic width.
     &.alignleft,
     &.alignright {
-      max-width: $wrapper-max-width / 2;
+      max-width: math.div($wrapper-max-width, 2);
       width: 100%;
     }
 
