@@ -13,12 +13,14 @@
       }
     ],
     "max-nesting-depth": 4,
+    "no-descending-specificity": null,
     "no-duplicate-selectors": [
       true,
       {
         "severity": "warning"
       }
     ],
+    "no-invalid-position-at-import-rule": false,
     "selector-class-pattern": null,
     "selector-list-comma-newline-after": null,
     "selector-max-compound-selectors": [
@@ -28,7 +30,6 @@
       }
     ],
     "selector-no-qualifying-type": null,
-    "no-descending-specificity": null,
     "order/order": null,
     "order/properties-alphabetical-order": null,
     "scss/at-extend-no-missing-placeholder": [

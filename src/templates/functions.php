@@ -17,7 +17,7 @@ require 'functions-widgets.php';
     }
 
     return $endpoints;
-  });
+  } );
 
 /* CONTENT */
   if ( ! isset( $content_width ) ) {

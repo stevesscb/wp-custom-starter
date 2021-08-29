@@ -11,7 +11,6 @@ Text Domain: grayscale
 
 @use 'sass:math';
 
-/* stylelint-disable no-invalid-position-at-import-rule */
 // ==========================================================================
 // CORE
 // ==========================================================================
@@ -31,4 +30,3 @@ $is-frontend: true;
 // ==========================================================================
 @import 'page';
 @import 'typography';
-/* stylelint-enable no-invalid-position-at-import-rule */
