@@ -3,19 +3,16 @@ const config = require('../gulpconfig').styles;
 const args = require('yargs').argv;
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
-const Fiber = require('fibers');
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const gulpNotify = require('gulp-notify');
 const gulpPlumber = require('gulp-plumber');
 const gulpPostCSS = require('gulp-postcss');
-const gulpSass = require('gulp-sass');
+const gulpSass = require('gulp-sass')(require('sass'));
 const gulpSassVariables = require('gulp-sass-variables');
 const gulpSourcemaps = require('gulp-sourcemaps');
 const gulpTouchCmd = require('gulp-touch-cmd');
 const postcssCalc = require('postcss-calc');
-
-gulpSass.compiler = require('sass');
 
 function stylesDefault() {
   return gulp.src(config.src, {ignore: config.adminSrc})
@@ -26,8 +23,7 @@ function stylesDefault() {
         $version: require('../package').version,
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
-      .pipe(gulpSass({
-        fiber: Fiber,
+      .pipe(gulpSass.sync({
         includePaths: config.includePaths,
         outputStyle: 'compressed',
       }))
@@ -50,8 +46,7 @@ function stylesAdmin() {
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
-      .pipe(gulpSass({
-        fiber: Fiber,
+      .pipe(gulpSass.sync({
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([
@@ -73,8 +68,7 @@ function stylesBlocks() {
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
-      .pipe(gulpSass({
-        fiber: Fiber,
+      .pipe(gulpSass.sync({
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([
