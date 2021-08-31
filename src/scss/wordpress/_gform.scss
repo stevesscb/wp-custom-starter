@@ -43,12 +43,6 @@
     &:nth-child(n+2) {
       margin-left: 1rem;
     }
-
-    @include gs-breakpoint(medium, up) {
-      &:nth-child(n+2) {
-        margin-left: 2rem;
-      }
-    }
   }
 
   &.ginput_container_address {

@@ -6,7 +6,7 @@
       <main id="main">
 
         <?php if ( $tmp = get_search_query() ) : ?>
-          <h1><?php printf( __( 'Search Results for %s', 'grayscale' ), $tmp ); ?></h1>
+          <h1><?php printf( __( 'Search Results for “%s”', 'grayscale' ), $tmp ); ?></h1>
         <?php else : ?>
           <h1><?php _e( 'You might be interested in&hellip;', 'grayscale' ); ?></h1>
         <?php endif; ?>

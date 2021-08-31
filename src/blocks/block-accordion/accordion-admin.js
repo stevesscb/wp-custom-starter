@@ -189,7 +189,6 @@ registerBlockType( 'client/accordion-item', {
         <div className="accordion-content" data-tab-content>
           <InnerBlocks
             allowedBlocks={ [
-              'core/button',
               'core/buttons',
               'core/heading',
               'core/image',
