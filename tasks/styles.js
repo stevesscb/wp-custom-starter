@@ -1,30 +1,36 @@
-const config = require('../gulpconfig').styles;
+import config from '../gulpconfig.js';
 
-const args = require('yargs').argv;
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const gulp = require('gulp');
-const gulpIf = require('gulp-if');
-const gulpNotify = require('gulp-notify');
-const gulpPlumber = require('gulp-plumber');
-const gulpPostCSS = require('gulp-postcss');
-const gulpSass = require('gulp-sass')(require('sass'));
-const gulpSassVariables = require('gulp-sass-variables');
-const gulpSourcemaps = require('gulp-sourcemaps');
-const gulpTouchCmd = require('gulp-touch-cmd');
-const postcssCalc = require('postcss-calc');
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import dartSass from 'sass';
+import fs from 'node:fs/promises';
+import gulp from 'gulp';
+import gulpIf from 'gulp-if';
+import gulpNotify from 'gulp-notify';
+import gulpPlumber from 'gulp-plumber';
+import gulpPostCSS from 'gulp-postcss';
+import gulpSass from 'gulp-sass';
+import gulpSassVariables from 'gulp-sass-variables';
+import gulpSourcemaps from 'gulp-sourcemaps';
+import gulpTouchCmd from 'gulp-touch-cmd';
+import postcssCalc from 'postcss-calc';
+import yargs from 'yargs';
+
+const args = yargs(process.argv.slice(2)).argv;
+const packageJSON = JSON.parse(await fs.readFile('package.json'));
+const sass = gulpSass(dartSass);
 
 function stylesDefault() {
-  return gulp.src(config.src, {ignore: config.adminSrc})
+  return gulp.src(config.styles.src, {ignore: config.styles.adminSrc})
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
       .pipe(gulpSassVariables({
-        $version: require('../package').version,
+        $version: packageJSON.version,
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
-      .pipe(gulpSass.sync({
-        includePaths: config.includePaths,
+      .pipe(sass.sync({
+        includePaths: config.styles.includePaths,
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([
@@ -37,16 +43,16 @@ function stylesDefault() {
         }),
       ]))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.write('./')))
-      .pipe(gulp.dest(config.dest))
+      .pipe(gulp.dest(config.styles.dest))
       .pipe(gulpTouchCmd());
 }
 
 function stylesAdmin() {
-  return gulp.src(config.adminSrc)
+  return gulp.src(config.styles.adminSrc)
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
-      .pipe(gulpSass.sync({
+      .pipe(sass.sync({
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([
@@ -58,17 +64,17 @@ function stylesAdmin() {
           precision: 2,
         }),
       ]))
-      .pipe(gulp.dest(config.adminDest))
+      .pipe(gulp.dest(config.styles.adminDest))
       .pipe(gulpTouchCmd());
 }
 
 function stylesBlocks() {
-  return gulp.src(config.blocksSrc)
+  return gulp.src(config.styles.blocksSrc)
       .pipe(gulpPlumber({
         errorHandler: gulpNotify.onError('Error: <%= error.message %>'),
       }))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.init()))
-      .pipe(gulpSass.sync({
+      .pipe(sass.sync({
         outputStyle: 'compressed',
       }))
       .pipe(gulpPostCSS([
@@ -81,8 +87,12 @@ function stylesBlocks() {
         }),
       ]))
       .pipe(gulpIf(!(args.production), gulpSourcemaps.write('./')))
-      .pipe(gulp.dest(config.blocksDest))
+      .pipe(gulp.dest(config.styles.blocksDest))
       .pipe(gulpTouchCmd());
 }
 
-exports.styles = gulp.parallel(stylesDefault, stylesAdmin, stylesBlocks);
+export default gulp.parallel(
+    stylesDefault,
+    stylesAdmin,
+    stylesBlocks,
+);

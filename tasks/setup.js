@@ -1,15 +1,15 @@
-const config = require('../gulpconfig').setup;
+import config from '../gulpconfig.js';
 
-const chalk = require('chalk');
-const del = require('del');
-const download = require('download');
-const fs = require('fs');
-const gulp = require('gulp');
-const gulpStringReplace = require('gulp-string-replace');
-const inquirer = require('inquirer');
-const nodeFetch = require('node-fetch');
-const ora = require('ora');
-const through = require('through2');
+import chalk from 'chalk';
+import del from 'del';
+import download from 'download';
+import gulp from 'gulp';
+import gulpStringReplace from 'gulp-string-replace';
+import inquirer from 'inquirer';
+import fs from 'node:fs';
+import nodeFetch from 'node-fetch';
+import ora from 'ora';
+import through from 'through2';
 
 const gulpStringReplaceOption = {
   logs: {
@@ -129,7 +129,7 @@ function setProjectIdentifiers() {
 function downloadDepdencies(cb) {
   const dependencyQuestions = [];
 
-  Object.keys(config.dep).forEach((depName) => {
+  Object.keys(config.setup.dep).forEach((depName) => {
     dependencyQuestions.push({
       name: depName,
       message: `Should I download ${depName}?`,
@@ -139,20 +139,20 @@ function downloadDepdencies(cb) {
   });
 
   inquirer.prompt(dependencyQuestions).then((answers) => {
-    const dependencySources = [];
+    const dependencySrcs = [];
 
-    Object.keys(config.dep).forEach((depName) => {
+    Object.keys(config.setup.dep).forEach((depName) => {
       if (answers[depName]) {
-        dependencySources.push(config.dep[depName]);
+        dependencySrcs.push(config.setup.dep[depName]);
       }
     });
 
-    if (!dependencySources) {
+    if (!dependencySrcs) {
       cb();
     } else {
       const spinner = ora('Downloading...').start();
 
-      Promise.all(dependencySources.map((url) => download(url, config.dest, {
+      Promise.all(dependencySrcs.map((url) => download(url, config.setup.dest, {
         extract: true,
         strip: 1,
       }))).then((resolved) => {
@@ -168,9 +168,9 @@ function downloadDepdencies(cb) {
 
 function wpRemoveThemes() {
   return del([
-    config.dest + '/wp-content/themes/**',
-    '!' + config.dest + '/wp-content/themes',
-    '!' + config.dest + '/wp-content/themes/index.php',
+    config.setup.dest + '/wp-content/themes/**',
+    '!' + config.setup.dest + '/wp-content/themes',
+    '!' + config.setup.dest + '/wp-content/themes/index.php',
   ]);
 }
 
@@ -192,31 +192,31 @@ function fetchWPsalt() {
 }
 
 function wpReplaceSalt() {
-  return gulp.src(config.dest + '/wp-config*.php')
+  return gulp.src(config.setup.dest + '/wp-config*.php')
       .pipe(through.obj(function(file, enc, cb) {
         const oldWPconfig = file.contents.toString(enc).split(/\r\n|\r|\n/g);
         let newWPconfig = [];
         let isSaltReplaced = false;
 
-        oldWPconfig.forEach((line, index) => {
+        oldWPconfig.setup.forEach((line, index) => {
           if (!line.match('put your unique phrase here')) {
-            newWPconfig.push(line);
+            newWPconfig.setup.push(line);
           } else if (!isSaltReplaced) {
-            newWPconfig.push(projectSalt);
+            newWPconfig.setup.push(projectSalt);
             isSaltReplaced = true;
           }
         });
 
-        newWPconfig = newWPconfig.join('\n');
+        newWPconfig = newWPconfig.setup.join('\n');
 
         file.contents = Buffer.from(newWPconfig);
         cb(null, file);
       }))
-      .pipe(gulp.dest(config.dest));
+      .pipe(gulp.dest(config.setup.dest));
 }
 
 function displayCompleteHint(cb) {
-  fs.readdir(config.dest + '/', (e, files) => {
+  fs.readdir(config.setup.dest + '/', (e, files) => {
     if (e) {
       console.log(chalk.red('Cannot read directory.'));
     } else {
@@ -228,7 +228,7 @@ function displayCompleteHint(cb) {
 
       files.forEach((file) => {
         if (/wp-config[\S]+\.php/.test(file)) {
-          console.log(chalk.green(` 👉 ${config.dest}/${file}\r`));
+          console.log(chalk.green(` 👉 ${config.setup.dest}/${file}\r`));
         }
       });
 
@@ -240,7 +240,7 @@ function displayCompleteHint(cb) {
   });
 }
 
-exports.setup = gulp.series(
+export default gulp.series(
     setProjectIdentifiers,
     downloadDepdencies,
     wpRemoveThemes,

@@ -2,7 +2,7 @@ const project = 'grayscale'; // set project name as path
 const src = './src';
 const dist = './app/public';
 
-module.exports = {
+export default {
   assets: {
     src: src + '/assets/**',
     dest: dist + '/wp-content/themes/' + project + '/assets',
