@@ -16,7 +16,7 @@
               <p class="article-meta">
                 <small>
                   <?php
-                    $date = '<time datetime="' . esc_attr( get_the_date( 'Y-m-d' ) ) . '">' . esc_html( get_the_date() ) . '</time>';
+                    $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
                     printf( __( 'Posted by %s on %s', 'grayscale' ), esc_html( get_the_author() ), $date);
                   ?>
                 </small>
