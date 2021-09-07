@@ -11,11 +11,11 @@
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
     "@babel/preset-react": "^7.14.5",
     "@wordpress/eslint-plugin": "^9.1.1",
-    "autoprefixer": "^10.3.3",
+    "autoprefixer": "^10.3.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "browser-sync": "^2.27.5",
@@ -47,12 +47,12 @@
     "ora": "^6.0.0",
     "postcss": "^8.3.6",
     "postcss-calc": "^8.0.0",
-    "sass": "^1.38.2",
+    "sass": "^1.39.0",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-config-standard": "^22.0.0",
     "through2": "^4.0.2",
-    "webpack": "^5.51.1",
+    "webpack": "^5.52.0",
     "yargs": "^17.1.1"
   },
   "babel": {
