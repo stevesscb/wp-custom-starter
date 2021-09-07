@@ -1,27 +1,29 @@
-const config = require('../gulpconfig');
+import config from './gulpconfig.js';
 
-const gulp = require('gulp');
+import gulp from 'gulp';
 
-const {assets} = require('./assets');
-const {browsersync} = require('./browsersync');
-const {clean} = require('./utility');
-const {scripts, scriptsDefault, scriptsAdmin} = require('./scripts');
-const {setup} = require('./setup');
-const {styles} = require('./styles');
-const {templates} = require('./templates');
+import assets from './tasks/assets.js';
+import browsersync from './tasks/browsersync.js';
+import {clean} from './tasks/utility.js';
+import scripts, {scriptsDefault, scriptsAdmin} from './tasks/scripts.js';
+import setup from './tasks/setup.js';
+import styles from './tasks/styles.js';
+import templates from './tasks/templates.js';
 
-exports.assets = assets;
-exports.scripts = scripts;
-exports.setup = setup;
-exports.styles = styles;
-exports.templates = templates;
+export {
+  assets,
+  scripts,
+  setup,
+  styles,
+  templates,
+};
 
-exports.build = gulp.series(
+export const build = gulp.series(
     clean,
     gulp.parallel(assets, scripts, styles, templates),
 );
 
-exports.watch = gulp.parallel(
+export const watch = gulp.parallel(
     browsersync,
     function monitorFiles() {
       gulp.watch(
@@ -56,4 +58,4 @@ exports.watch = gulp.parallel(
     },
 );
 
-exports.default = setup;
+export default build;
