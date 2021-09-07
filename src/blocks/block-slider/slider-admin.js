@@ -2,7 +2,7 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import pick from 'lodash/pick.js';
+import { pick } from 'lodash';
 
 /**
  * WordPress dependencies

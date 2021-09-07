@@ -63,7 +63,7 @@ export function scriptsDefault(cb) {
     console.error(`[${chalk.blue('webpack')}]`);
     console.error(stats.toString(statOptions));
 
-    cb();
+    if (!!cb) cb();
   });
 }
 
