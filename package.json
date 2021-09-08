@@ -1,20 +1,23 @@
 {
   "name": "grayscale-wordpress-scaffolding",
-  "version": "1.5.2",
+  "version": "2.0.0",
   "author": "K Chan <k.chan@grayscale.com.hk> (https://grayscale.com.hk)",
   "license": "GPL-3.0",
   "repository": "github:grayscaleltd/grayscale-wordpress-scaffolding",
   "homepage": "https://grayscale.com.hk",
   "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
-    "@babel/preset-env": "^7.15.0",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
     "@babel/preset-react": "^7.14.5",
     "@wordpress/eslint-plugin": "^9.1.1",
-    "autoprefixer": "^10.3.3",
+    "autoprefixer": "^10.3.4",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
-    "babel-plugin-lodash": "^3.3.4",
     "browser-sync": "^2.27.5",
     "chalk": "^4.1.2",
     "classnames": "^2.3.1",
@@ -27,7 +30,7 @@
     "gulp": "^4.0.2",
     "gulp-changed": "^4.0.3",
     "gulp-if": "^3.0.0",
-    "gulp-imagemin": "^7.1.0",
+    "gulp-imagemin": "^8.0.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",
     "gulp-postcss": "^9.0.1",
@@ -38,24 +41,21 @@
     "gulp-string-replace": "^1.1.2",
     "gulp-touch-cmd": "0.0.1",
     "inquirer": "^8.1.2",
-    "lodash": "^4.17.21",
-    "node-fetch": "^2.6.1",
+    "lodash": "npm:lodash-es@^4.17.21",
+    "node-fetch": "^3.0.0",
     "normalize.css": "^8.0.1",
-    "ora": "^5.4.1",
+    "ora": "^6.0.0",
     "postcss": "^8.3.6",
     "postcss-calc": "^8.0.0",
-    "sass": "^1.38.2",
+    "sass": "^1.39.0",
     "stylelint": "^13.13.1",
     "stylelint-config-sass-guidelines": "^8.0.0",
     "stylelint-config-standard": "^22.0.0",
     "through2": "^4.0.2",
-    "webpack": "^5.51.1",
+    "webpack": "^5.52.0",
     "yargs": "^17.1.1"
   },
   "babel": {
-    "plugins": [
-      "lodash"
-    ],
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
