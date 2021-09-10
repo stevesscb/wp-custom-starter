@@ -32,7 +32,7 @@
 
   // ***************************************************************************
   // Text alignments.
-  // https://github.com/WordPress/gutenberg/blob/wp/5.7/packages/block-library/src/common.scss
+  // https://github.com/WordPress/gutenberg/blob/wp/5.8/packages/block-library/src/common.scss
   // ***************************************************************************
 
   .has-text-align-center {
@@ -51,6 +51,7 @@
 }
 
 figcaption {
+  margin-top: 0.5em;
   text-align: initial;
 
   .alignfull & {
