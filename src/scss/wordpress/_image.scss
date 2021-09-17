@@ -1,6 +1,4 @@
 .wp-block-image {
-  // The image block is in a `figure` element, and many themes zero this out.
-  // This rule explicitly sets it, to ensure at least some bottom-margin in the flow.
   margin-bottom: 1.5em;
 
   // img {
@@ -70,4 +68,8 @@
 
 .wp-caption-text {
   @extend figcaption;
+}
+
+.wp-block-image figure {
+  margin: 0;
 }
