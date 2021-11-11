@@ -20,6 +20,8 @@ wp.domReady(function() {
   ];
 
   const whitelistedCoreVariations = [
+    ['core/buttons', 'buttons-horizontal'],
+    ['core/buttons', 'buttons-vertical'],
     ['core/columns', 'one-column-full'],
     ['core/columns', 'two-columns-equal'],
     ['core/columns', 'two-columns-one-third-two-thirds'],
