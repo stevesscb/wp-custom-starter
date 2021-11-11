@@ -2,7 +2,7 @@
 // Breakpoint
 // - Check if the given size name is in the selected $breakpoints
 // - TRUE:
-//   (1) Get the input’s corresponding value from $breakpoints
+//   (1) Get the corresponding value from $breakpoints
 //   (2) Prepare a list of breakpoint values to render a ranged media query
 //   (3) Determine how many breakpoints are there to prevent invalid range
 //   (4) Determine the index of the current breakpoint for comparison

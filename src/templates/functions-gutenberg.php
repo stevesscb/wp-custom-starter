@@ -30,6 +30,8 @@
   } );
 
   add_filter( 'block_editor_settings', function ( $editor_settings ) {
+    $editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
+    $editor_settings['__experimentalFeatures']['color']['duotone'] = [];
     $editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
     return $editor_settings;
   } );
