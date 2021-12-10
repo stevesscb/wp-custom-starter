@@ -17,7 +17,7 @@
                 <small>
                   <?php
                     $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
-                    printf( __( 'Posted by %s on %s', 'grayscale' ), esc_html( get_the_author() ), $date);
+                    printf( __( 'Posted by %s on %s', 'grayscale' ), esc_html( get_the_author() ), $date );
                   ?>
                 </small>
               </p>
