@@ -8,7 +8,7 @@ $gs-error: #f06;
 
 %admin-link-style {
   background: left 100% no-repeat;
-  background-image: linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(currentcolor, currentcolor);
   background-size: 0% 1px;
   color: $gs-white;
   text-decoration: none;
@@ -24,7 +24,7 @@ $gs-error: #f06;
 .login, .interim-login.login {
   background: $gs-major;
   color: $gs-major;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
 
   h1 a {
     margin: 0 0 25px;
