@@ -28,14 +28,14 @@ if ( !defined( 'ABSPATH' ) ) {
       'client-blocks-editor',
       plugins_url( 'client-blocks-editor.css', __FILE__ ),
       array( 'client-blocks' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? false : time()
+      ( wp_get_environment_type() === 'production' ) ? false : time()
     );
 
     wp_enqueue_script(
       'client-blocks-editor',
       plugins_url( 'client-blocks-editor.js', __FILE__ ),
       array( 'wp-i18n', 'wp-element', 'wp-blocks', 'wp-components', 'wp-editor' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? get_plugin_data( __FILE__ )['Version'] : time()
+      ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time()
     );
   } );
 
@@ -45,7 +45,7 @@ if ( !defined( 'ABSPATH' ) ) {
       'client-blocks',
       plugins_url( 'client-blocks.css', __FILE__ ),
       null,
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? get_plugin_data( __FILE__ )['Version'] : time()
+      ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time()
     );
   } );
 
@@ -54,7 +54,7 @@ if ( !defined( 'ABSPATH' ) ) {
       'client-blocks',
       plugins_url( 'client-blocks.js', __FILE__ ),
       array( 'jquery' ),
-      ( !defined( 'WP_ENV' ) || WP_ENV === 'production' ) ? get_plugin_data( __FILE__ )['Version'] : time(),
+      ( wp_get_environment_type() === 'production' ) ? get_file_data( __FILE__, array( 'Version' ) )[0] : time(),
       true
     );
   } );

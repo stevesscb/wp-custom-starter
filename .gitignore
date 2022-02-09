@@ -3,13 +3,16 @@ app
 httpdocs
 public_html
 
+# Composer
+vendor
+
 # Legacy
 _legacy
 
 # Mapping
 *.map
 
-# NPM
+# Node
 node_modules
 
 # OS

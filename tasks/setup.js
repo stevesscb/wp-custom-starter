@@ -198,16 +198,16 @@ function wpReplaceSalt() {
         let newWPconfig = [];
         let isSaltReplaced = false;
 
-        oldWPconfig.setup.forEach((line, index) => {
+        oldWPconfig.forEach((line, index) => {
           if (!line.match('put your unique phrase here')) {
-            newWPconfig.setup.push(line);
+            newWPconfig.push(line);
           } else if (!isSaltReplaced) {
-            newWPconfig.setup.push(projectSalt);
+            newWPconfig.push(projectSalt);
             isSaltReplaced = true;
           }
         });
 
-        newWPconfig = newWPconfig.setup.join('\n');
+        newWPconfig = newWPconfig.join('\n');
 
         file.contents = Buffer.from(newWPconfig);
         cb(null, file);
