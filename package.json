@@ -67,7 +67,7 @@
     "> 0.25%"
   ],
   "scripts": {
-    "setup": "npm install && gulp setup && gulp build",
+    "setup": "npm install && gulp setup && gulp build && composer install",
     "serve": "gulp watch",
     "build": "gulp build --production"
   }
