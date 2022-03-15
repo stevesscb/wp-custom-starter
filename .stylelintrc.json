@@ -5,13 +5,13 @@
   ],
   "rules": {
     "at-rule-empty-line-before": null,
-    "comment-whitespace-inside": null,
     "font-family-no-missing-generic-family-keyword": [
       true,
       {
         "ignoreFontFamilies": ["/icon/"]
       }
     ],
+    "function-parentheses-space-inside": "never-single-line",
     "max-nesting-depth": 4,
     "no-descending-specificity": null,
     "no-duplicate-selectors": [
@@ -38,5 +38,15 @@
         "severity": "warning"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/scss/wordpress/*.scss"],
+      "rules": {
+        "comment-empty-line-before": null,
+        "comment-whitespace-inside": null,
+        "rule-empty-line-before": null
+      }
+    }
+  ]
 }

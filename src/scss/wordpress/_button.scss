@@ -15,7 +15,7 @@
   padding: 0.25em 0.75em;
   text-align: center;
   text-decoration: none;
-  overflow-wrap: break-word;
+  word-break: break-word; // overflow-wrap doesn't work well if a link is wrapped in the div, so use word-break here.
 
   // &:hover,
   // &:focus,
@@ -34,7 +34,7 @@
   }
 }
 
-// Increased specificity needed to override margins
+// Increased specificity needed to override margins.
 .wp-block-buttons > .wp-block-button {
   &.has-custom-width {
     max-width: none;
