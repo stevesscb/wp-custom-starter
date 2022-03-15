@@ -12,8 +12,8 @@
       padding: 1rem;
       clip: auto !important;
       clip-path: none;
-      background-color: $color-bg;
-      color: $color-text;
+      background-color: var(--client--color--bg);
+      color: var(--client--color--text);
       font-size: 1rem;
       line-height: normal;
       text-decoration: none;

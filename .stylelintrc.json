@@ -5,6 +5,7 @@
   ],
   "rules": {
     "at-rule-empty-line-before": null,
+    "custom-property-pattern": "client--|wp--.+",
     "font-family-no-missing-generic-family-keyword": [
       true,
       {

@@ -4,8 +4,8 @@
 // Prefer the link selector instead of the regular button classname
 // to support the previous markup in addition to the new one.
 .wp-block-button__link {
-  color: $color-white;
-  background-color: $color-major;
+  color: var(--wp--preset--color--white);
+  background-color: var(--wp--preset--color--major);
   border: 0;
   border-radius: 0;
   // box-shadow: none;
@@ -50,57 +50,34 @@
   }
 
   &.wp-block-button__width-25 {
-    width: calc(25% - 1em);
+    width: calc(25% - (var(--wp--style--block-gap, 0.5em) * 0.75));
   }
 
   &.wp-block-button__width-50 {
-    width: calc(50% - 1em);
+    width: calc(50% - (var(--wp--style--block-gap, 0.5em) * 0.5));
   }
 
   &.wp-block-button__width-75 {
-    width: calc(75% - 1em);
+    width: calc(75% - (var(--wp--style--block-gap, 0.5em) * 0.25));
   }
 
   &.wp-block-button__width-100 {
-    width: calc(100% - 1em);
-
-    &:only-child {
-      margin-right: 0;
-      width: 100%;
-    }
+    width: 100%;
+    flex-basis: 100%;
   }
 }
 
-// If the browser supports column-gap, use that instead of the margins above.
-@supports (column-gap: 1em) {
-  .wp-block-buttons {
+// For vertical buttons, gap is not factored into width calculations.
+.wp-block-buttons.is-vertical > .wp-block-button {
+  &.wp-block-button__width-25 {
+    width: 25%;
+  }
 
-    > .wp-block-button,
-    &.is-content-justification-right > .wp-block-button, {
-      // Added (duplicate) specificity needed to override the default button margin.
-      &.wp-block-button {
-        margin-right: 0;
-        margin-left: 0;
-      }
-    }
+  &.wp-block-button__width-50 {
+    width: 50%;
+  }
 
-    > .wp-block-button {
-      &.wp-block-button__width-25 {
-        width: calc(25% - 1em * 0.75);
-      }
-
-      &.wp-block-button__width-50 {
-        width: calc(50% - 1em * 0.5);
-      }
-
-      &.wp-block-button__width-75 {
-        width: calc(75% - 1em * 0.25);
-      }
-
-      &.wp-block-button__width-100 {
-        width: auto;
-        flex-basis: 100%;
-      }
-    }
+  &.wp-block-button__width-75 {
+    width: 75%;
   }
 }

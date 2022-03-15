@@ -1,7 +1,7 @@
 html {
   box-sizing: border-box;
-  background: $color-bg;
-  color: $color-text;
+  background: var(--client--color--bg);
+  color: var(--client--color--text);
   font-family: $font-content;
   @include gs-breakpoint-loop($font-size-roots) using ($item) {
     font-size: math.div($item, 16px) * 100%;
