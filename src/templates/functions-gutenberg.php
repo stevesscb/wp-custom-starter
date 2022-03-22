@@ -41,5 +41,14 @@
     return $editor_settings;
   } );
 
+  // ==========================================================================
+  // WordPress forces duotone on us so we need to force our way out of it. The
+  // 1st action removes the SVG masks output at the beginning of <body>. The 2nd
+  // action removes global-styles-inline-css as the duotone classes are inlined.
+  // https://github.com/WordPress/gutenberg/issues/38299
+  //
+  // However, this will also remove other useful CSS variables, so we need to
+  // manuallly compensate that with _colors.scss and _font-sizes.scss
+  // ==========================================================================
   remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
   remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );
