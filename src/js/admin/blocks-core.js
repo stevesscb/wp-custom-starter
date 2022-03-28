@@ -12,6 +12,8 @@ wp.domReady(function() {
     'core/heading',
     'core/image',
     'core/list',
+    'core/media-text',
+    'core/missing',
     'core/paragraph',
     'core/quote',
   ];
@@ -20,14 +22,13 @@ wp.domReady(function() {
   ];
 
   const whitelistedCoreVariations = [
-    ['core/buttons', 'buttons-horizontal'],
-    ['core/buttons', 'buttons-vertical'],
     ['core/columns', 'one-column-full'],
     ['core/columns', 'two-columns-equal'],
     ['core/columns', 'two-columns-one-third-two-thirds'],
     ['core/columns', 'two-columns-two-thirds-one-third'],
     ['core/columns', 'three-columns-equal'],
     ['core/columns', 'three-columns-wider-center'],
+    ['core/group', 'group-row'],
   ];
 
   // Display statuses of Core Blocks, Styles, and Variations

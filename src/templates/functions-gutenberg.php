@@ -29,9 +29,26 @@
     remove_theme_support( 'core-block-patterns' );
   } );
 
-  add_filter( 'block_editor_settings', function ( $editor_settings ) {
+  add_filter( 'block_editor_settings_all', function ( $editor_settings ) {
     $editor_settings['__experimentalFeatures']['color']['customDuotone'] = false;
     $editor_settings['__experimentalFeatures']['color']['duotone'] = [];
     $editor_settings['__experimentalFeatures']['typography']['dropCap'] = false;
+    $editor_settings['__experimentalFeatures']['typography']['fontStyle'] = false;
+    $editor_settings['__experimentalFeatures']['typography']['fontWeight'] = false;
+    $editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
+    $editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
+    $editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;
     return $editor_settings;
   } );
+
+  // ==========================================================================
+  // WordPress forces duotone on us so we need to force our way out of it. The
+  // 1st action removes the SVG masks output at the beginning of <body>. The 2nd
+  // action removes global-styles-inline-css as the duotone classes are inlined.
+  // https://github.com/WordPress/gutenberg/issues/38299
+  //
+  // However, this will also remove other useful CSS variables, so we need to
+  // manuallly compensate that with _colors.scss and _font-sizes.scss
+  // ==========================================================================
+  remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+  remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );

@@ -20,7 +20,7 @@ $gs-error: #f06;
   }
 }
 
-/* stylelint-disable selector-max-id */
+/* stylelint-disable selector-id-pattern, selector-max-id */
 .login, .interim-login.login {
   background: $gs-major;
   color: $gs-major;
@@ -33,7 +33,7 @@ $gs-error: #f06;
     background: url('../assets/images/logo-grayscale.svg') center no-repeat;
   }
 
-  [name='loginform'] { // #loginform {
+  [name='loginform'] {
     border: 0;
   }
 
@@ -68,4 +68,4 @@ $gs-error: #f06;
     color: $color-white;
   }
 }
-/* stylelint-enable selector-max-id */
+/* stylelint-enable selector-id-pattern, selector-max-id */
