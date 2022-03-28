@@ -9,9 +9,9 @@
     flex-wrap: nowrap;
   }
 
-  // &:where(.has-background) {
-  //   padding: 1rem;
-  // }
+  &:where(.has-background) {
+    padding: 1rem;
+  }
 
   /**
   * All Columns Alignment
