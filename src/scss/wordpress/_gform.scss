@@ -8,10 +8,6 @@
   transform: translate(-50%, -50%);
 }
 
-.gform_anchor {
-  @extend %sr-only;
-}
-
 .gform_submission_error {
   display: flex;
   align-items: center;

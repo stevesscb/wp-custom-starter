@@ -23,7 +23,9 @@ button, input, select, textarea {
   max-width: 100%;
   padding: 0.25em 0.75em;
   border: 1px solid currentcolor;
-  background: $color-white;
+  background: inherit;
+  color: inherit;
+  accent-color: $color-major;
   font: inherit;
 }
 
