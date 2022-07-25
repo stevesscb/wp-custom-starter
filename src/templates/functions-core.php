@@ -204,8 +204,8 @@
 
       foreach ( $atts as $attr => $value ) {
         if ( ! empty( $value ) ) {
-           $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
-           $attributes .= ' ' . $attr . '="' . $value . '"';
+            $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+            $attributes .= ' ' . $attr . '="' . $value . '"';
         }
       }
 
