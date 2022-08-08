@@ -164,7 +164,7 @@ registerBlockType( 'client/accordion-item', {
             label={ __( 'HTML Anchor', 'grayscale' ) }
             value={ accordionAnchor }
             onChange={ ( id ) => setAttributes( {
-              anchor: id,
+              accordionAnchor: id,
             } ) }
           />
         </PanelBody>

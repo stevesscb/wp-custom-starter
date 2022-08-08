@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-  <div class="content-block">
-    <div class="wrapper">
+  <main id="main">
 
-      <main id="main">
+    <div class="content-block">
+      <div class="wrapper">
 
         <?php if ( $tmp = get_search_query() ) : ?>
           <h1><?php printf( __( 'Search Results for “%s”', 'grayscale' ), $tmp ); ?></h1>
@@ -57,11 +57,11 @@
 
         <?php endif; ?>
 
-      </main>
-
-      <?php get_sidebar(); ?>
-
+      </div>
     </div>
-  </div>
+
+  </main>
+
+  <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

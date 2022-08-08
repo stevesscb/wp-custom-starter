@@ -1,11 +1,11 @@
 <?php get_header(); ?>
 
-  <?php if ( have_posts() ) : the_post(); ?>
+  <main id="main">
 
-    <div class="content-block">
-      <div class="wrapper">
+    <?php if ( have_posts() ) : the_post(); ?>
 
-        <main id="main">
+      <div class="content-block">
+        <div class="wrapper">
 
           <?php the_title( '<h1>', '</h1>' ); ?>
 
@@ -13,13 +13,13 @@
 
           <?php edit_post_link( __( 'Edit', 'grayscale' ), '<ul class="wp-article-links"><li>', '</li></ul>' ); ?>
 
-        </main>
-
-        <?php get_sidebar(); ?>
-
+        </div>
       </div>
-    </div>
 
-  <?php endif; ?>
+    <?php endif; ?>
+
+  </main>
+
+  <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

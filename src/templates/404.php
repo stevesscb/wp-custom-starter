@@ -1,9 +1,9 @@
 <?php get_header(); ?>
 
-  <div class="content-block">
-    <div class="wrapper">
+  <main id="main">
 
-      <main id="main">
+    <div class="content-block">
+      <div class="wrapper">
 
         <h1><?php _e( 'Page Not Found', 'grayscale' ); ?></h1>
 
@@ -13,11 +13,11 @@
 
         <p><a href="<?php echo home_url(); ?>"><?php _e( '&larr; Return Home', 'grayscale' ); ?></a></p>
 
-      </main>
-
-      <?php get_sidebar(); ?>
-
+      </div>
     </div>
-  </div>
+
+  </main>
+
+  <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

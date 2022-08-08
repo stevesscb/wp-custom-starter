@@ -1,11 +1,23 @@
 <?php get_header(); ?>
 
-  <div class="content-block">
-    <div class="wrapper">
+  <main id="main">
 
-      <main id="main">
+    <div class="content-block">
+      <div class="wrapper">
 
-        <?php the_archive_title( '<h1>', '</h1>' ); ?>
+        <?php if ( $pseudoArchivePage = get_page_by_path( get_post_type() ) ) : ?>
+
+          <?php setup_postdata( $post = $pseudoArchivePage ); ?>
+
+          <?php the_title( '<h1>', '</h1>' ); ?>
+
+          <?php wp_reset_postdata(); ?>
+
+        <?php else : ?>
+
+          <?php the_archive_title( '<h1>', '</h1>' ); ?>
+
+        <?php endif; ?>
 
         <?php if ( have_posts() ) : ?>
 
@@ -51,11 +63,11 @@
 
         <?php endif; ?>
 
-      </main>
-
-      <?php get_sidebar(); ?>
-
+      </div>
     </div>
-  </div>
+
+  </main>
+
+  <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
