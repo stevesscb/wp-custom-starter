@@ -24,7 +24,7 @@
     add_theme_support( 'disable-custom-font-sizes' );
     add_theme_support( 'disable-custom-gradients' );
     add_theme_support( 'editor-color-palette', array() );
-    add_theme_support( 'editor-font-sizes' );
+    add_theme_support( 'editor-font-sizes', array() );
     add_theme_support( 'editor-gradient-presets', array() );
     remove_theme_support( 'core-block-patterns' );
   } );
@@ -38,6 +38,8 @@
     $editor_settings['__experimentalFeatures']['typography']['letterSpacing'] = false;
     $editor_settings['__experimentalFeatures']['typography']['textDecoration'] = false;
     $editor_settings['__experimentalFeatures']['blocks']['core/button']['border']['radius'] = false;
+    $editor_settings['canLockBlocks'] = current_user_can( 'activate_plugins' );
+    $editor_settings['codeEditingEnabled'] = current_user_can( 'activate_plugins' );
     return $editor_settings;
   } );
 
