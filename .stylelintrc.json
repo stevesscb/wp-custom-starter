@@ -30,6 +30,7 @@
     ],
     "scss/comment-no-empty": null,
     "scss/dollar-variable-empty-line-before": null,
+    "scss/dollar-variable-pattern": null,
     "scss/double-slash-comment-empty-line-before": null
   },
   "overrides": [
