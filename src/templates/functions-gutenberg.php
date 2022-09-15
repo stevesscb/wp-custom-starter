@@ -50,7 +50,7 @@
   // https://github.com/WordPress/gutenberg/issues/38299
   //
   // However, this will also remove other useful CSS variables, so we need to
-  // manuallly compensate that with _colors.scss and _font-sizes.scss
+  // manually compensate that with _colors.scss and _font-sizes.scss
   // ==========================================================================
   remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
   remove_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' );

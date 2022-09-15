@@ -5,7 +5,7 @@
     <div class="content-block">
       <div class="wrapper">
 
-        <?php if ( $pseudoArchivePage = get_page_by_path( get_post_type() ) ) : ?>
+        <?php if ( $pseudoArchivePage = get_page_by_path( get_query_var( 'post_type' ) ) ) : ?>
 
           <?php setup_postdata( $post = $pseudoArchivePage ); ?>
 
