@@ -39,5 +39,5 @@ h6 {
 }
 
 [type='checkbox'], [type='radio'] {
-  accent-color: $color-major;
+  accent-color: var(--wp--preset--color--major);
 }
