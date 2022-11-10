@@ -1,3 +1,5 @@
+/* global wp */
+
 wp.domReady(function() {
   const whitelistedCoreBlocks = [
     'core/block',
@@ -12,6 +14,7 @@ wp.domReady(function() {
     'core/heading',
     'core/image',
     'core/list',
+    'core/list-item',
     'core/media-text',
     'core/missing',
     'core/paragraph',
