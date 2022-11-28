@@ -1,4 +1,4 @@
-const project = 'grayscale'; // set project name as path
+const project = 'custom'; // set project name as path
 const src = './src';
 const dist = './app/public';
 
@@ -34,16 +34,15 @@ export default {
 
   setup: {
     dep: {
-      'WordPress': 'https://wordpress.org/latest.zip',
-      'Multiconfig': 'https://github.com/studio24/wordpress-multi-env-config/archive/master.zip',
+      WordPress: 'https://wordpress.org/latest.zip',
+      Multiconfig:
+        'https://github.com/studio24/wordpress-multi-env-config/archive/master.zip',
     },
     dest: dist,
   },
 
   styles: {
-    includePaths: [
-      'node_modules/normalize.css',
-    ],
+    includePaths: ['node_modules/normalize.css'],
     src: src + '/scss/**/*.scss',
     dest: dist + '/wp-content/themes/' + project,
     adminSrc: src + '/scss/admin/*.scss',
@@ -60,10 +59,6 @@ export default {
   },
 
   utility: {
-    clean: [
-      '**/.DS_Store',
-      '**/Thumbs.db',
-      dist + '/**/*.map',
-    ],
+    clean: ['**/.DS_Store', '**/Thumbs.db', dist + '/**/*.map'],
   },
 };

@@ -8,25 +8,17 @@ import classnames from 'classnames';
  */
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const {
-  InspectorControls,
-  InnerBlocks,
-  RichText,
-} = wp.blockEditor;
-const {
-  PanelBody,
-  TextControl,
-  ToggleControl,
-} = wp.components;
+const { InspectorControls, InnerBlocks, RichText } = wp.blockEditor;
+const { PanelBody, TextControl, ToggleControl } = wp.components;
 
 /*
  * Register block
  */
-registerBlockType( 'client/accordion', {
-  title: __( 'Accordion', 'grayscale' ),
+registerBlockType('client/accordion', {
+  title: __('Accordion', 'custom'),
   description: __(
     'Show information in a condensed way that can be expanded or collapsed.',
-    'grayscale'
+    'custom'
   ),
   category: 'widgets',
   icon: 'excerpt-view',
@@ -49,72 +41,67 @@ registerBlockType( 'client/accordion', {
     multiple: true,
   },
   parent: null,
-  edit: ( props ) => {
+  edit: (props) => {
     const {
-      attributes: {
-        multiExpand,
-        allowAllClosed,
-      },
+      attributes: { multiExpand, allowAllClosed },
       className,
       clientId,
       setAttributes,
     } = props;
 
     return [
-      <InspectorControls key="inspector">
-        <PanelBody title={ __( 'Accordion Settings', 'grayscale' ) }>
+      <InspectorControls key='inspector'>
+        <PanelBody title={__('Accordion Settings', 'custom')}>
           <ToggleControl
-            label={ __( 'Multi-expand', 'grayscale' ) }
-            checked={ multiExpand }
-            onChange={ () => setAttributes( {
-              multiExpand: ! multiExpand,
-            } ) }
+            label={__('Multi-expand', 'custom')}
+            checked={multiExpand}
+            onChange={() =>
+              setAttributes({
+                multiExpand: !multiExpand,
+              })
+            }
           />
           <ToggleControl
-            label={ __( 'Allow all closed', 'grayscale' ) }
-            checked={ allowAllClosed }
-            onChange={ () => setAttributes( {
-              allowAllClosed: ! allowAllClosed,
-            } ) }
+            label={__('Allow all closed', 'custom')}
+            checked={allowAllClosed}
+            onChange={() =>
+              setAttributes({
+                allowAllClosed: !allowAllClosed,
+              })
+            }
           />
         </PanelBody>
       </InspectorControls>,
       <div
-        key={ clientId }
-        className={ classnames( 'accordion', className ) }
+        key={clientId}
+        className={classnames('accordion', className)}
         data-accordion
       >
-        <InnerBlocks allowedBlocks={ [ 'client/accordion-item' ] } />
+        <InnerBlocks allowedBlocks={['client/accordion-item']} />
       </div>,
     ];
   },
-  save: ( props ) => {
-    const {
-      multiExpand,
-      allowAllClosed,
-    } = props.attributes;
+  save: (props) => {
+    const { multiExpand, allowAllClosed } = props.attributes;
     return (
       <ul
-        className={ classnames( 'accordion' ) }
+        className={classnames('accordion')}
         data-accordion
-        data-multi-expand={ multiExpand ? 'true' : 'false' }
-        data-allow-all-closed={ allowAllClosed ? 'true' : 'false' }
-        data-deep-link="true"
-        data-deep-link-smudge="true"
-        data-update-history="true"
+        data-multi-expand={multiExpand ? 'true' : 'false'}
+        data-allow-all-closed={allowAllClosed ? 'true' : 'false'}
+        data-deep-link='true'
+        data-deep-link-smudge='true'
+        data-update-history='true'
       >
         <InnerBlocks.Content />
       </ul>
     );
   },
-} );
+});
 
-registerBlockType( 'client/accordion-item', {
-  title: __( 'Accordion Item', 'grayscale' ),
-  description: __(
-    'Content within the Accordion.',
-    'grayscale'
-  ),
+registerBlockType('client/accordion-item', {
+  title: __('Accordion Item', 'custom'),
+  description: __('Content within the Accordion.', 'custom'),
   category: 'common',
   icon: 'text',
   keywords: [],
@@ -139,107 +126,109 @@ registerBlockType( 'client/accordion-item', {
     align: [],
     multiple: true,
   },
-  parent: [ 'client/accordion' ],
-  edit: ( props ) => {
+  parent: ['client/accordion'],
+  edit: (props) => {
     const {
-      attributes: {
-        accordionTitle, accordionAnchor, isOpen,
-      },
+      attributes: { accordionTitle, accordionAnchor, isOpen },
       className,
       clientId,
       setAttributes,
     } = props;
 
     return [
-      <InspectorControls key="inspector">
-        <PanelBody title={ __( 'Item Settings', 'grayscale' ) }>
+      <InspectorControls key='inspector'>
+        <PanelBody title={__('Item Settings', 'custom')}>
           <ToggleControl
-            label={ __( 'Open on load', 'grayscale' ) }
-            checked={ isOpen }
-            onChange={ () => setAttributes( {
-              isOpen: ! isOpen,
-            } ) }
+            label={__('Open on load', 'custom')}
+            checked={isOpen}
+            onChange={() =>
+              setAttributes({
+                isOpen: !isOpen,
+              })
+            }
           />
           <TextControl
-            label={ __( 'HTML Anchor', 'grayscale' ) }
-            value={ accordionAnchor }
-            onChange={ ( id ) => setAttributes( {
-              accordionAnchor: id,
-            } ) }
+            label={__('HTML Anchor', 'custom')}
+            value={accordionAnchor}
+            onChange={(id) =>
+              setAttributes({
+                accordionAnchor: id,
+              })
+            }
           />
         </PanelBody>
       </InspectorControls>,
       <div
-        key={ clientId }
-        className={ classnames( 'accordion-item', 'is-active', className ) }
+        key={clientId}
+        className={classnames('accordion-item', 'is-active', className)}
         data-accordion-item
       >
         <RichText
-          className="accordion-title"
-          value={ accordionTitle }
-          onChange={ ( title ) => setAttributes( {
-            accordionTitle: title,
-          } ) }
-          tagName="a"
-          placeholder={ __( 'Accordion Title', 'grayscale' ) }
-          keepPlaceholderOnFocus="true"
-          multiline="false"
-          allowedFormats="false"
+          className='accordion-title'
+          value={accordionTitle}
+          onChange={(title) =>
+            setAttributes({
+              accordionTitle: title,
+            })
+          }
+          tagName='a'
+          placeholder={__('Accordion Title', 'custom')}
+          keepPlaceholderOnFocus='true'
+          multiline='false'
+          allowedFormats='false'
         />
-        <div className="accordion-content" data-tab-content>
+        <div className='accordion-content' data-tab-content>
           <InnerBlocks
-            allowedBlocks={ [
+            allowedBlocks={[
               'core/buttons',
               'core/heading',
               'core/image',
               'core/list',
               'core/paragraph',
-            ] }
+            ]}
           />
         </div>
       </div>,
     ];
   },
-  save: ( props ) => {
-    const {
-      accordionTitle, accordionAnchor, isOpen,
-    } = props.attributes;
+  save: (props) => {
+    const { accordionTitle, accordionAnchor, isOpen } = props.attributes;
 
-    if ( ! accordionTitle ) {
+    if (!accordionTitle) {
       return;
     }
 
     return (
       <li
-        className={ classnames(
-          'accordion-item',
-          { 'is-active': isOpen },
-        ) }
+        className={classnames('accordion-item', { 'is-active': isOpen })}
         data-accordion-item
       >
         <a
-          href={ ( accordionAnchor ) ?
-            '#' + accordionAnchor :
-            '#' + encodeURI( accordionTitle[ 0 ] )
-              .replace( /[^%0-9A-Za-z]/g, '-' )
-              .replace( /%/g, '' )
-              .replace( /-+/g, '-' )
-              .toLowerCase()
+          href={
+            accordionAnchor
+              ? '#' + accordionAnchor
+              : '#' +
+                encodeURI(accordionTitle[0])
+                  .replace(/[^%0-9A-Za-z]/g, '-')
+                  .replace(/%/g, '')
+                  .replace(/-+/g, '-')
+                  .toLowerCase()
           }
-          className="accordion-title"
+          className='accordion-title'
         >
-          <RichText.Content value={ accordionTitle } />
+          <RichText.Content value={accordionTitle} />
         </a>
         <div
-          id={ ( accordionAnchor ) ?
-            accordionAnchor :
-            encodeURI( accordionTitle[ 0 ] )
-              .replace( /[^%0-9A-Za-z]/g, '-' )
-              .replace( /%/g, '' )
-              .replace( /-+/g, '-' )
-              .toLowerCase()
+          id={
+            accordionAnchor
+              ? accordionAnchor
+              : encodeURI(accordionTitle[0])
+                  .replace(/[^%0-9A-Za-z]/g, '-')
+                  .replace(/%/g, '')
+                  .replace(/-+/g, '-')
+                  .toLowerCase()
           }
-          className="accordion-content"
+          className='accordion-content'
           data-tab-content
         >
           <InnerBlocks.Content />
@@ -247,4 +236,4 @@ registerBlockType( 'client/accordion-item', {
       </li>
     );
   },
-} );
+});

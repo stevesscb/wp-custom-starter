@@ -14,14 +14,17 @@ $gs-error: #f06;
   text-decoration: none;
   @include gs-transition;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     background-size: 100% 1px;
     color: $gs-white;
   }
 }
 
 /* stylelint-disable selector-id-pattern, selector-max-id */
-.login, .interim-login.login {
+.login,
+.interim-login.login {
   background: $gs-major;
   color: $gs-major;
   font-family: Inter, sans-serif;
@@ -30,14 +33,16 @@ $gs-error: #f06;
     margin: 0 0 25px;
     width: 4em;
     height: 4em;
-    background: url('../assets/images/logo-grayscale.svg') center no-repeat;
+    background: url('../assets/images/logo-custom.svg') center
+      no-repeat;
   }
 
   [name='loginform'] {
     border: 0;
   }
 
-  #nav, #backtoblog {
+  #nav,
+  #backtoblog {
     padding: 0;
 
     a {
@@ -45,7 +50,8 @@ $gs-error: #f06;
     }
   }
 
-  .message, .success {
+  .message,
+  .success {
     border-left-color: $gs-minor;
   }
 

@@ -1,73 +1,73 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
-    <div class="content-block">
-      <div class="wrapper">
+  <div class="content-block">
+    <div class="wrapper">
 
-        <?php if ( $pseudoArchivePage = get_post( get_option( 'page_for_posts' ) ) ) : ?>
+      <?php if ($pseudoArchivePage = get_post(get_option('page_for_posts'))) : ?>
 
-          <?php setup_postdata( $post = $pseudoArchivePage ); ?>
+        <?php setup_postdata($post = $pseudoArchivePage); ?>
 
-          <?php the_title( '<h1>', '</h1>' ); ?>
+        <?php the_title('<h1>', '</h1>'); ?>
 
-          <?php wp_reset_postdata(); ?>
+        <?php wp_reset_postdata(); ?>
 
-        <?php else : ?>
+      <?php else : ?>
 
-          <?php the_archive_title( '<h1>', '</h1>' ); ?>
+        <?php the_archive_title('<h1>', '</h1>'); ?>
 
-        <?php endif; ?>
+      <?php endif; ?>
 
-        <?php if ( have_posts() ) : ?>
+      <?php if (have_posts()) : ?>
 
-          <?php while ( have_posts() ) : the_post(); ?>
+        <?php while (have_posts()) : the_post(); ?>
 
-            <article <?php post_class(); ?>>
+          <article <?php post_class(); ?>>
 
-              <p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
+            <p><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
 
-              <p class="article-meta">
-                <small>
-                  <?php
-                    $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
-                    printf( __( 'Posted by %s on %s', 'grayscale' ), esc_html( get_the_author() ), $date );
-                  ?>
-                </small>
-              </p>
+            <p class="article-meta">
+              <small>
+                <?php
+                $date = '<time datetime="' . get_the_date('Y-m-d') . '">' . get_the_date() . '</time>';
+                printf(__('Posted by %s on %s', 'custom'), esc_html(get_the_author()), $date);
+                ?>
+              </small>
+            </p>
 
-              <?php the_excerpt(); ?>
+            <?php the_excerpt(); ?>
 
-              <ul class="wp-article-links">
-                <li><a href="<?php the_permalink(); ?>"><?php _e( 'Continue Reading &rarr;', 'grayscale' ); ?></a></li>
-                <?php if ( comments_open() || get_comments_number() ) : ?>
-                  <li><a href="<?php comments_link(); ?>"><?php comments_number( 'No Comments', '1 Comment', '% Comments' ); ?></a></li>
-                <?php endif; ?>
-                <?php edit_post_link( __( 'Edit', 'grayscale' ), '<li>', '</li>' ); ?>
-              </ul>
+            <ul class="wp-article-links">
+              <li><a href="<?php the_permalink(); ?>"><?php _e('Continue Reading &rarr;', 'custom'); ?></a></li>
+              <?php if (comments_open() || get_comments_number()) : ?>
+                <li><a href="<?php comments_link(); ?>"><?php comments_number('No Comments', '1 Comment', '% Comments'); ?></a></li>
+              <?php endif; ?>
+              <?php edit_post_link(__('Edit', 'custom'), '<li>', '</li>'); ?>
+            </ul>
 
-            </article>
+          </article>
 
-          <?php endwhile; ?>
+        <?php endwhile; ?>
 
-          <?php
-            the_posts_pagination( array(
-              'prev_text' => __( '&larr;', 'grayscale' ),
-              'next_text' => __( '&rarr;', 'grayscale' ),
-            ) );
-          ?>
+        <?php
+        the_posts_pagination(array(
+          'prev_text' => __('&larr;', 'custom'),
+          'next_text' => __('&rarr;', 'custom'),
+        ));
+        ?>
 
-        <?php else : ?>
+      <?php else : ?>
 
-          <p><?php _e( 'Sorry, we cannot find what you are looking for.', 'grayscale' ); ?></p>
+        <p><?php _e('Sorry, we cannot find what you are looking for.', 'custom'); ?></p>
 
-        <?php endif; ?>
+      <?php endif; ?>
 
-      </div>
     </div>
+  </div>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

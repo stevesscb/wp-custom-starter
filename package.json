@@ -1,10 +1,10 @@
 {
-  "name": "grayscale-wordpress-scaffolding",
+  "name": "custom-wordpress-starter",
   "version": "2.8.1",
-  "author": "K Chan <k.chan@grayscale.com.hk> (https://grayscale.com.hk)",
+  "author": "K Chan <k.chan@custom.com.hk> (https://custom.com.hk)",
   "license": "GPL-3.0",
-  "repository": "github:grayscaleltd/grayscale-wordpress-scaffolding",
-  "homepage": "https://grayscale.com.hk",
+  "repository": "github:customltd/custom-wordpress-starter",
+  "homepage": "https://custom.com.hk",
   "private": true,
   "type": "module",
   "engines": {
@@ -43,7 +43,6 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-string-replace": "^1.1.2",
     "gulp-touch-cmd": "0.0.1",
-    "husky": "^8.0.2",
     "inquirer": "^9.1.4",
     "lodash-es": "^4.17.21",
     "node-fetch": "^3.3.0",
@@ -72,7 +71,6 @@
   ],
   "scripts": {
     "setup": "npm install && gulp setup && gulp build && composer install",
-    "prepare": "husky install",
     "serve": "gulp watch",
     "build": "gulp build --production"
   }

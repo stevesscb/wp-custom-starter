@@ -1,7 +1,7 @@
 import config from '../gulpconfig.js';
 
 import chalk from 'chalk';
-import {deleteAsync} from 'del';
+import { deleteAsync } from 'del';
 import download from 'download';
 import gulp from 'gulp';
 import gulpStringReplace from 'gulp-string-replace';
@@ -24,106 +24,116 @@ let projectSalt = '';
 
 function setProjectIdentifiers() {
   process.stdout.write(
-      process.platform === 'win32' ?
-        '\x1B[2J\x1B[0f' :
-        '\x1B[2J\x1B[3J\x1B[H'
+    process.platform === 'win32' ? '\x1B[2J\x1B[0f' : '\x1B[2J\x1B[3J\x1B[H'
   );
 
   console.log(
-      '\n',
-      chalk.bgHex('#7c01fd').black(` Grayscale WordPress Scaffolder `),
-      '\n',
+    '\n',
+    chalk.bgHex('#7c01fd').black(` custom WordPress Scaffolder `),
+    '\n'
   );
 
-  return inquirer.prompt([
-    {
-      name: 'projectName',
-      message: 'Project name (alphabets, hyphens, and spaces only):',
-      validate: (value) => {
-        if (value === '') {
-          return 'Project name cannot be empty!';
-        } else if (/^[ ]/.test(value)) {
-          return 'Project name cannot start with a space!';
-        } else if (/[^A-Za-z -]/.test(value)) {
-          return 'Alphabets, hyphens, and spaces only!';
-        } else {
-          projectName = value;
-          return true;
-        }
+  return inquirer
+    .prompt([
+      {
+        name: 'projectName',
+        message: 'Project name (alphabets, hyphens, and spaces only):',
+        validate: (value) => {
+          if (value === '') {
+            return 'Project name cannot be empty!';
+          } else if (/^[ ]/.test(value)) {
+            return 'Project name cannot start with a space!';
+          } else if (/[^A-Za-z -]/.test(value)) {
+            return 'Alphabets, hyphens, and spaces only!';
+          } else {
+            projectName = value;
+            return true;
+          }
+        },
       },
-    },
-    {
-      name: 'projectSlug',
-      message: 'Project slug (alphabets and underscores only):',
-      default: () => {
-        return projectName.replace(/[^0-9|A-Z|a-z]/g, '_')
+      {
+        name: 'projectSlug',
+        message: 'Project slug (alphabets and underscores only):',
+        default: () => {
+          return projectName
+            .replace(/[^0-9|A-Z|a-z]/g, '_')
             .replace(/_+/g, '_')
             .toLowerCase();
+        },
+        validate: (value) => {
+          if (value === '') {
+            return 'Project slug cannot be empty!';
+          } else if (/[^A-Za-z_]/.test(value)) {
+            return 'Alphabets and underscores only!';
+          } else {
+            projectSlug = value;
+            return true;
+          }
+        },
       },
-      validate: (value) => {
-        if (value === '') {
-          return 'Project slug cannot be empty!';
-        } else if (/[^A-Za-z_]/.test(value)) {
-          return 'Alphabets and underscores only!';
-        } else {
-          projectSlug = value;
-          return true;
-        }
+      {
+        name: 'projectURL',
+        message: 'Project URL:',
+        default: () => {
+          return 'https://' + projectSlug + '.com';
+        },
+        validate: (value) => {
+          if (/[^A-Za-z:/\-.]/.test(value)) {
+            return 'Alphabets, colon, forward slashes, and hyphens only!';
+          } else {
+            projectURL = value;
+            return true;
+          }
+        },
       },
-    },
-    {
-      name: 'projectURL',
-      message: 'Project URL:',
-      default: () => {
-        return 'https://' + projectSlug + '.com';
-      },
-      validate: (value) => {
-        if (/[^A-Za-z:/\-.]/.test(value)) {
-          return 'Alphabets, colon, forward slashes, and hyphens only!';
-        } else {
-          projectURL = value;
-          return true;
-        }
-      },
-    },
-  ]).then((answers) => {
-    return gulp.src([
-      './src/**',
-      './gulpconfig.js',
-      './package.json',
-    ], {base: './'})
-        .pipe(gulpStringReplace(
-            /: Grayscale/g,
+    ])
+    .then((answers) => {
+      return gulp
+        .src(['./src/**', './gulpconfig.js', './package.json'], { base: './' })
+        .pipe(
+          gulpStringReplace(
+            /: custom/g,
             `: ${projectName}`,
             gulpStringReplaceOption
-        ))
-        .pipe(gulpStringReplace(
-            /: grayscale/g,
+          )
+        )
+        .pipe(
+          gulpStringReplace(
+            /: custom/g,
             `: ${projectSlug}`,
             gulpStringReplaceOption
-        ))
-        .pipe(gulpStringReplace(
-            /'grayscale'/g,
+          )
+        )
+        .pipe(
+          gulpStringReplace(
+            /'custom'/g,
             `'${projectSlug}'`,
             gulpStringReplaceOption
-        ))
-        .pipe(gulpStringReplace(
-            /grayscale-wordpress-scaffolding/g,
+          )
+        )
+        .pipe(
+          gulpStringReplace(
+            /custom-wordpress-starter/g,
             `${projectSlug}`,
             gulpStringReplaceOption
-        ))
-        .pipe(gulpStringReplace(
+          )
+        )
+        .pipe(
+          gulpStringReplace(
             /"version": "(\d|\.)+"/g,
             `"version": "0.0.1"`,
             gulpStringReplaceOption
-        ))
-        .pipe(gulpStringReplace(
-            /"homepage": "https:\/\/grayscale\.com\.hk"/g,
+          )
+        )
+        .pipe(
+          gulpStringReplace(
+            /"homepage": "https:\/\/custom\.com\.hk"/g,
             `"homepage": "${projectURL}"`,
             gulpStringReplaceOption
-        ))
+          )
+        )
         .pipe(gulp.dest('./'));
-  });
+    });
 }
 
 function downloadDepdencies(cb) {
@@ -152,16 +162,23 @@ function downloadDepdencies(cb) {
     } else {
       const spinner = ora('Downloading...').start();
 
-      Promise.all(dependencySrcs.map((url) => download(url, config.setup.dest, {
-        extract: true,
-        strip: 1,
-      }))).then((resolved) => {
-        spinner.succeed(`Downloaded ${resolved.length} item(s).`);
-      }).catch((error) => {
-        spinner.fail(`Download incomplete: ${error.name}.`);
-      }).finally(() => {
-        cb();
-      });
+      Promise.all(
+        dependencySrcs.map((url) =>
+          download(url, config.setup.dest, {
+            extract: true,
+            strip: 1,
+          })
+        )
+      )
+        .then((resolved) => {
+          spinner.succeed(`Downloaded ${resolved.length} item(s).`);
+        })
+        .catch((error) => {
+          spinner.fail(`Download incomplete: ${error.name}.`);
+        })
+        .finally(() => {
+          cb();
+        });
     }
   });
 }
@@ -176,24 +193,29 @@ function wpRemoveThemes() {
 
 function fetchWPsalt() {
   return nodeFetch('https://api.wordpress.org/secret-key/1.1/salt/')
-      .then((response) => {
-        if (response.ok) {
-          return response.text();
-        } else {
-          throw new Error(response.statusText);
-        }
-      })
-      .then((salt) => {
-        projectSalt = salt.split('\n').filter((line) => (line)).join('\n');
-      })
-      .catch((error) => {
-        console.error(chalk.red('fetchWPsalt Error: ' + error.message));
-      });
+    .then((response) => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        throw new Error(response.statusText);
+      }
+    })
+    .then((salt) => {
+      projectSalt = salt
+        .split('\n')
+        .filter((line) => line)
+        .join('\n');
+    })
+    .catch((error) => {
+      console.error(chalk.red('fetchWPsalt Error: ' + error.message));
+    });
 }
 
 function wpReplaceSalt() {
-  return gulp.src(config.setup.dest + '/wp-config*.php')
-      .pipe(through.obj(function(file, enc, cb) {
+  return gulp
+    .src(config.setup.dest + '/wp-config*.php')
+    .pipe(
+      through.obj(function (file, enc, cb) {
         const oldWPconfig = file.contents.toString(enc).split(/\r\n|\r|\n/g);
         let newWPconfig = [];
         let isSaltReplaced = false;
@@ -211,8 +233,9 @@ function wpReplaceSalt() {
 
         file.contents = Buffer.from(newWPconfig);
         cb(null, file);
-      }))
-      .pipe(gulp.dest(config.setup.dest));
+      })
+    )
+    .pipe(gulp.dest(config.setup.dest));
 }
 
 function displayCompleteHint(cb) {
@@ -221,9 +244,9 @@ function displayCompleteHint(cb) {
       console.log(chalk.red('Cannot read directory.'));
     } else {
       console.log(
-          '\n',
-          chalk.bgGreen.black(` WordPress is ready. Configure the files: `),
-          '\n',
+        '\n',
+        chalk.bgGreen.black(` WordPress is ready. Configure the files: `),
+        '\n'
       );
 
       files.forEach((file) => {
@@ -241,10 +264,10 @@ function displayCompleteHint(cb) {
 }
 
 export default gulp.series(
-    setProjectIdentifiers,
-    downloadDepdencies,
-    wpRemoveThemes,
-    fetchWPsalt,
-    wpReplaceSalt,
-    displayCompleteHint,
+  setProjectIdentifiers,
+  downloadDepdencies,
+  wpRemoveThemes,
+  fetchWPsalt,
+  wpReplaceSalt,
+  displayCompleteHint
 );

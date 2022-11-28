@@ -1,70 +1,70 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
-    <?php if ( have_posts() ) : the_post(); ?>
+  <?php if (have_posts()) : the_post(); ?>
 
-      <div class="content-block">
-        <div class="wrapper">
+    <div class="content-block">
+      <div class="wrapper">
 
-          <article <?php post_class(); ?>>
+        <article <?php post_class(); ?>>
 
-            <header>
+          <header>
 
-              <?php the_title( '<h1>', '</h1>' ); ?>
+            <?php the_title('<h1>', '</h1>'); ?>
 
-              <p class="article-meta">
-                <small>
-                  <?php
-                    $date = '<time datetime="' . get_the_date( 'Y-m-d' ) . '">' . get_the_date() . '</time>';
-                    printf( __( 'Posted by %s on %s', 'grayscale' ), esc_html( get_the_author() ), $date );
-                  ?>
-                </small>
-              </p>
+            <p class="article-meta">
+              <small>
+                <?php
+                $date = '<time datetime="' . get_the_date('Y-m-d') . '">' . get_the_date() . '</time>';
+                printf(__('Posted by %s on %s', 'custom'), esc_html(get_the_author()), $date);
+                ?>
+              </small>
+            </p>
 
-            </header>
+          </header>
 
-            <?php the_content(); ?>
+          <?php the_content(); ?>
 
-            <?php wp_link_pages(); ?>
+          <?php wp_link_pages(); ?>
 
-            <footer>
+          <footer>
 
-              <p><?php the_category( ', ' ); ?></p>
+            <p><?php the_category(', '); ?></p>
 
-              <p><?php the_tags(); ?></p>
+            <p><?php the_tags(); ?></p>
 
-              <?php edit_post_link( __( 'Edit', 'grayscale' ), '<ul class="wp-article-links"><li>', '</li></ul>' ); ?>
+            <?php edit_post_link(__('Edit', 'custom'), '<ul class="wp-article-links"><li>', '</li></ul>'); ?>
 
-              <?php
-                if ( comments_open() || get_comments_number() ) {
-                  comments_template();
-                }
-              ?>
+            <?php
+            if (comments_open() || get_comments_number()) {
+              comments_template();
+            }
+            ?>
 
-            </footer>
+          </footer>
 
-          </article>
+        </article>
 
-          <?php if ( get_adjacent_post() ) : ?>
+        <?php if (get_adjacent_post()) : ?>
 
-            <nav>
+          <nav>
 
-              <?php previous_post_link(); ?>
+            <?php previous_post_link(); ?>
 
-              <?php next_post_link(); ?>
+            <?php next_post_link(); ?>
 
-            </nav>
+          </nav>
 
-          <?php endif; ?>
+        <?php endif; ?>
 
-        </div>
       </div>
+    </div>
 
-    <?php endif; ?>
+  <?php endif; ?>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

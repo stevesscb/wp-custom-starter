@@ -1,31 +1,31 @@
 <?php get_header(); ?>
 
-  <main id="main">
+<main id="main">
 
-    <?php if ( have_posts() ) : the_post(); ?>
+  <?php if (have_posts()) : the_post(); ?>
 
-      <div class="content-block">
-        <div class="wrapper">
+    <div class="content-block">
+      <div class="wrapper">
 
-          <article <?php post_class(); ?>>
+        <article <?php post_class(); ?>>
 
-            <?php the_title( '<h1>', '</h1>' ); ?>
+          <?php the_title('<h1>', '</h1>'); ?>
 
-            <?php the_content(); ?>
+          <?php the_content(); ?>
 
-            <?php wp_link_pages(); ?>
+          <?php wp_link_pages(); ?>
 
-            <?php edit_post_link( __( 'Edit', 'grayscale' ), '<ul class="wp-article-links"><li>', '</li></ul>' ); ?>
+          <?php edit_post_link(__('Edit', 'custom'), '<ul class="wp-article-links"><li>', '</li></ul>'); ?>
 
-          </article>
+        </article>
 
-        </div>
       </div>
+    </div>
 
-    <?php endif; ?>
+  <?php endif; ?>
 
-  </main>
+</main>
 
-  <?php get_sidebar(); ?>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>
